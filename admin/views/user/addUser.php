@@ -9,7 +9,7 @@
         </div>
 
         <div class="table-commodities">
-            <form action="index.php?act=add-kh" method="post">
+            <form enctype="multipart/form-data" action="index.php?act=addUser" method="post">
                 <table class="commodities">
                     <tbody class="product-list">
                     <tr>
@@ -18,11 +18,11 @@
                     </tr>
                     <tr>
                         <td>Ảnh</td>
-                        <td><input name="img" value="" type="file"></td>
+                        <td><input name="img" value="" type="file" ></td>
                     </tr>
                     <tr>
                         <td>Tên tài khoản</td>
-                        <td><input name="account" value="" type="text"></td>
+                        <td><input name="account" value="" type="text" accept="uploads/*"></td>
                     </tr>
                     <tr>
                         <td>Mật khẩu</td>
@@ -60,14 +60,9 @@
                     <button class="btn-list" type="submit"><a href="index.php?act=listUser">Danh sách khách hàng</a>
                     </button>
                     <button name="btn-add" class="btn-add" type="submit">Thêm</button>
-
                 </div>
             </form>
-
-
         </div>
-
-
     </div>
 </div>
 </body>

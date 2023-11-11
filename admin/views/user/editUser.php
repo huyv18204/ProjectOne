@@ -10,16 +10,18 @@
         <div class="notification"></div>
         <div class="table-commodities">
             <?php extract($list_user); ?>
-            <form action="index.php?act=update-kh" method="post">
+            <form action="index.php?act=updateUser" enctype="multipart/form-data" method="post">
                 <table class="commodities">
                     <tbody class="product-list">
                     <tr>
                         <td>Họ và tên</td>
-                        <td><input name="name" value="<?= $name ?>" type="text"></td>
+                        <td><input name="name" value="<?= $name_user ?>" type="text"></td>
                     </tr>
                     <tr>
                         <td>Ảnh</td>
-                        <td><input name="img" value="<?= $name ?>" type="file"></td>
+                        <td>
+                            <img width="100px" src="../upload/<?= $img_user ?>" alt="">
+                            <input name="img" type="file"></td>
                     </tr>
                     <tr>
                         <td>Tên tài khoản</td>
@@ -27,7 +29,7 @@
                     </tr>
                     <tr>
                         <td>Mật khẩu</td>
-                        <td><input name="pass" value="<?= $pass ?>" type="text"></td>
+                        <td><input name="pass" value="<?= $password ?>" type="text"></td>
                     </tr>
                     <tr>
                         <td>Địa chỉ</td>
@@ -66,7 +68,7 @@
                 </table>
                 <div class="add">
                     <input type="hidden" name="id" value="<?php echo $id_user ?>">
-                    <button class="btn-list" type="submit"><a href="index.php?act=list-kh">Danh sách khách hàng</a>
+                    <button class="btn-list" type="submit"><a href="index.php?act=listUser">Danh sách khách hàng</a>
                     </button>
                     <button name="btn-edit" class="btn-add" type="submit">Sửa</button>
                 </div>

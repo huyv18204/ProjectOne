@@ -1,2 +1,2 @@
-<script src="../js/admin.js"></script>
+<script src="../javascript/admin.js"></script>
 </html>
