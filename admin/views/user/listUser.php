@@ -32,10 +32,10 @@
                         <th>Chức năng</th>
                     </tr>
                     </thead>
-                    <?php foreach ($listkh as $user) {
+                    <?php foreach ($listUser as $user) {
                         extract($user);
-                        $path_edit = 'index.php?act=edit-kh&id=' . $id_user;
-                        $path_del = 'index.php?act=del-kh&id=' . $id_user;
+                        $path_edit = 'index.php?act=editUser&id=' . $id_user;
+                        $path_del = 'index.php?act=deleteUser&id=' . $id_user;
                         if ($role == 1) {
                             $role_user = "Quản trị viên";
                         } else {
@@ -46,25 +46,25 @@
                     <tr>
                         <td width="10"><input type="checkbox"></td>
                         <td>' . $id_user . '</td>
-                        <td><img src="../image/iphone.png" alt=""></td>
-                        <td>' . $name . '</td>
+                        <td><img width="100px" src="../upload/'.$img_user.'" alt=""></td>
+                        <td>' . $name_user . '</td>
                         <td>' . $account . '</td>
                         <td>' . $email . '</td>
                         <td>' . $phone . '</td>
                         <td>' . $address . '</td>
                         <td>' . $role_user . '</td>
+                        ';?>
                         <td>
                             <button class="delete">
-                                <a href="' . $path_del . '"><i class="fas fa-trash-alt"></i></a>
+                                <a href="javascript:confirmDeleTe('<?php echo $path_del?>')"><i class="fas fa-trash-alt"></i></a>
                        </button>
                        <button class="edit">
-                                <a href="index.php?act=editUser"><i class="fas fa-edit"></i></a>
+                                <a href="<?php echo $path_edit?>"><i class="fas fa-edit"></i></a>
                        </button>
                         </td>
                     </tr>
                     </tbody>
-                    ';
-                    } ?>
+                    <?php } ?>
 
                 </table>
                 <div id="pagination"></div>
