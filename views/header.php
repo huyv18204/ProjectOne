@@ -40,10 +40,10 @@
                                     <li><a  id="loginBtn" href="index.php?act=login">Đăng Nhập</a></li>
                                     <li><a  id="registerBtn" href="index.php?act=register">Đăng Kí</a></li>
                                 <?php } else { ?>
-                                    <li><a href="index.php?act=update_information">Thông Tin Tài Khoản</a></li>
+                                    <li><a href="index.php?act=updateInformation">Thông Tin Tài Khoản</a></li>
                                     <?php if($_SESSION['account']['role'] == 1){
                                         echo '
-                                    <li><a href="admin/index.php?act=list-sp">Quản Lí Trang Web</a></li>
+                                    <li><a href="admin/index.php?act=listProduct">Quản Lí Trang Web</a></li>
                                     ';
                                     }?>
                                     <li><a href="index.php?act=changePassword">Đổi Mật Khẩu</a></li>

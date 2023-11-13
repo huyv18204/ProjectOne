@@ -21,10 +21,10 @@ function del_user($id_user)
 
 function update_user($name_user,$img_user, $account, $password, $email, $phone, $address, $role, $id)
 {
-    if($img_user == ""){
-        $sql = "update user set name_user = '$name_user',account = '$account',password = '$password',email = '$email',phone = '$phone',address = '$address', role = '$role' where id_user = '$id'";
-    }else{
+    if($img_user != ""){
         $sql = "update user set name_user = '$name_user',img_user = '$img_user',account = '$account',password = '$password',email = '$email',phone = '$phone',address = '$address', role = '$role' where id_user = '$id'";
+    }else{
+        $sql = "update user set name_user = '$name_user',account = '$account',password = '$password',email = '$email',phone = '$phone',address = '$address', role = '$role' where id_user = '$id'";
     }
 
     pdo_execute($sql);

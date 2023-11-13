@@ -73,7 +73,25 @@ if(isset($_GET["act"])){
             include "views/login/changePass.php";
             break;
         case 'updateInformation':
-            include "views/login/updateInformation.php";
+            if (isset($_POST['btn-updateInfo'])) {
+                $id_user = $_POST['id_user'];
+                $target_dir = "upload/";
+                $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                    $img_user = $_FILES["img"]["name"];
+                }
+                $account = $_POST['account'];
+                $email = $_POST['email'];
+                $pass = $_POST['pass'];
+                $name = $_POST['name'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
+                update_user($id_user,$img_user, $pass, $name, $email, $phone, $address);
+                $_SESSION['account'] = select_account($account, $pass);
+                $notify = "Cập nhật thành công";
+
+            }
+            include "views/pages/updateInformation.php";
             break;
         case 'products':
             include "views/pages/product.php";
