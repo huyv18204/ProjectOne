@@ -22,4 +22,9 @@ if ($img_user != ""){
 }
     pdo_execute($sql);
 }
+
+function change_pass($new_pass,$id_user){
+    $sql = "update user set password = '$new_pass' where id_user = '$id_user'";
+    pdo_execute($sql);
+}
 ?>

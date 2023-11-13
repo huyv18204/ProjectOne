@@ -70,6 +70,19 @@ if(isset($_GET["act"])){
             include "views/login/forgotPass.php";
             break;
         case 'changePassword':
+            if (isset($_POST['btn-submit'])) {
+
+                $account = $_POST['account'];
+                $pass = $_POST['pass'];
+                $newPass = $_POST['newPass'];
+                if ($pass == $_SESSION['account']['password']) {
+                    change_pass($newPass, $_SESSION['account']['id_user']);
+                    $_SESSION['account'] = select_account($account, $newPass);
+                    $notify = "Cập nhật thành công";
+                } else {
+                    $notify = "Sai mật khẩu";
+                }
+            }
             include "views/login/changePass.php";
             break;
         case 'updateInformation':

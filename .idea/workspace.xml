@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c0823c0d-92e9-4cb6-96c1-6bf321d65baa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/admin/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/admin/user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/user/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/user/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login/updateInformation.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/updateInformation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login/changePass.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/login/changePass.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
