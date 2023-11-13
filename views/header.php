@@ -33,23 +33,32 @@
                     </ul>
                 </div>
                 <div id="menu" class="user-info">
-<!--                    <ul>-->
-<!--                        <li>-->
-                            <a id="showButton" href="#"> <i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
-<!--                            <ul id="categoryList" style="display: none;">-->
-<!--                                    <li><a  id="loginBtn" href="index.php?act=login">Đăng Nhập</a></li>-->
-<!--                                    <li><a  id="registerBtn" href="index.php?act=register">Đăng Kí</a></li>-->
-<!--                                    <li><a href="index.php?act=update_information">Thông Tin Tài Khoản</a></li>-->
-<!--                                    <li><a href="index.php?act=change_pass">Đổi Mật Khẩu</a></li>-->
-<!--                                    <li>-->
-<!--                                        <form action="index.php?act=home" method="post">-->
-<!--                                            <a name="btn-logout" href="index.php?act=logout">Đăng Xuất</a>-->
-<!--                                        </form>-->
-<!--                                    </li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!---->
+                    <ul>
+                        <li><a id="showButton" href="#"> <i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                            <ul id="categoryList" style="display: none;">
+                                <?php if (!isset($_SESSION['account'])) {?>
+                                    <li><a  id="loginBtn" href="index.php?act=login">Đăng Nhập</a></li>
+                                    <li><a  id="registerBtn" href="index.php?act=register">Đăng Kí</a></li>
+                                <?php } else { ?>
+                                    <li><a href="index.php?act=update_information">Thông Tin Tài Khoản</a></li>
+                                    <?php if($_SESSION['account']['role'] == 1){
+                                        echo '
+                                    <li><a href="admin/index.php?act=list-sp">Quản Lí Trang Web</a></li>
+                                    ';
+                                    }?>
+                                    <li><a href="index.php?act=changePassword">Đổi Mật Khẩu</a></li>
+                                    <li>
+                                        <form action="index.php?act=home" method="post">
+                                            <a name="btn-logout" href="index.php?act=logout">Đăng Xuất</a>
+                                        </form>
+                                    </li>
+                                <?php  } ?>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+
                 </div>
             </div>
         </div>
@@ -98,3 +107,4 @@
             </div>
         </nav>
     </header>
+

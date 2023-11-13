@@ -1,3 +1,21 @@
+var showButton = document.getElementById("showButton");
+var categoryList = document.getElementById("categoryList");
+
+// Hiển thị hoặc ẩn menu con khi click vào nút
+showButton.addEventListener("click", function (event) {
+    if (categoryList.style.display === "none" || categoryList.style.display === "") {
+        categoryList.style.display = "block";
+    } else {
+        categoryList.style.display = "none";
+    }
+    event.stopPropagation();
+});
+
+// Ẩn menu con khi click ra ngoài
+window.addEventListener("click", function () {
+    categoryList.style.display = "none";
+});
+
 let value = 1;
 
 function increaseValue() {
