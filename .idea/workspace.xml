@@ -28,6 +28,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2XmXoveiqEWWNcrKqUfNnTWoZe9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,7 +38,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/ProjectOne/image",
+    "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/ProjectOne",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -64,7 +65,9 @@
       <option name="presentableId" value="Default" />
       <updated>1699235407719</updated>
       <workItem from="1699235409074" duration="1959000" />
-      <workItem from="1699403523414" duration="38401000" />
+      <workItem from="1699403523414" duration="38753000" />
+      <workItem from="1699839255208" duration="5250000" />
+      <workItem from="1699846088199" duration="2693000" />
     </task>
     <servers />
   </component>

@@ -410,9 +410,9 @@ input.auth-form-input::placeholder {
 }
 
 
-/* input[type="checkbox"] {
+input[type="checkbox"] {
     display: none;
-} */
+}
 
 label input[type="checkbox"]~i.fa.fa-square-o {
     color: #fd5353;
@@ -551,6 +551,46 @@ p.auth-sgt {
     color: #2196f3b5;
     cursor: pointer;
 }
+
+#menu ul li {
+    position: relative;
+}
+
+#menu ul li ul {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+    background-color: #444444;
+    margin-top: 11px;
+    width: 160px;
+}
+
+#menu ul li ul li {
+    list-style: none;
+    height: 30px;
+    margin-top: 5px;
+
+}
+
+#menu ul li {
+    list-style: none;
+
+}
+
+#menu ul li ul li a {
+    text-decoration: none;
+    margin: 10px;
+    color: white;
+
+    font-size: 13px;
+}
+
+#menu ul ul li:hover a {
+    color: #7AC142;
+}
+
 
 /*UPDATEINFORMATION*/
 
