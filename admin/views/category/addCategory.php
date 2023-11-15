@@ -9,7 +9,7 @@
         </div>
         <div class="notification"></div>
         <div class="table-commodities">
-            <form enctype="multipart/form-data" action="index.php?act=add-dm" method="post">
+            <form enctype="multipart/form-data" action="index.php?act=addCategory" method="post">
                 <table class="commodities">
                     <tbody class="product-list">
                     <tr>
