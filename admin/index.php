@@ -1,6 +1,7 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include '../model/category/category.php';
 include '../model/PDO.php';
 include '../model/admin/user.php';
 include 'views/header.php';
@@ -8,16 +9,51 @@ include 'views/header.php';
 if(isset($_GET["act"])){
     $act = $_GET["act"];
     switch ($act){
+//danh muc        
         case "listCategory":
+            $listdm = select_all_danhmuc();
             include "views/category/listCategory.php";
             break;
         case "editCategory":
+            if (isset($_GET['id'])) {
+                $listdm = select_one_danhmuc($_GET['id']);
+            }
             include "views/category/editCategory.php";
             break;
+        case 'update-dm':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (empty($_POST['name-category'])) {
+                    $notify = "Không được bỏ trống tên danh mục";
+                    header('location:index.php?act=editCategory');
+                } else {
+                    $name_category = $_POST['name-category'];
+                    $id = $_POST['id'];
+                    // setcookie("thong_bao", "Cập nhật thành công.", time() + 2);
+                    update_danhmuc($name_category, $id);
+                    header('location:index.php?act=listCategory');
+                }
+            }
+            break;
         case "addCategory":
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (empty($_POST['name-category'])) {
+                    $notify = "Không được bỏ trống tên danh mục";
+                } else {
+                    $name_category = $_POST['name-category'];
+                    insert_danhmuc($name_category);
+                    header('location:index.php?act=listCategory');
+                }
+            }
             include "views/category/addCategory.php";
             break;
-
+        case 'del-dm':
+            if (isset($_GET['id'])) {
+                del_danhmuc($_GET['id']);
+                // setcookie("thong_bao", "Xoá thành công.", time() + 2);
+            }
+            header("location:index.php?act=listCategory");
+            break; 
+// San pham
         case "listProduct":
             include "views/product/listProduct.php";
             break;

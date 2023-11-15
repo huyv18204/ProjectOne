@@ -27,20 +27,27 @@
                     </tr>
                     </thead>
                     <tbody class="product-list">
+                    <?php foreach ($listdm as $value) {
+                        extract($value);
+                        $path_edit = 'index.php?act=editCategory&id=' . $id_category;
+                        $path_del = 'index.php?act=del-dm&id=' . $id_category;
+                        echo '
                             <tr>
                         <td width="10"><input type="checkbox"></td>
-                        <td>1</td>
-                        <td>IPHONE 15 SERIES</td>
-                        <td>
-
+                        <td>' . $id_category . '</td>
+                        <td>' . $name_category . '</td>
+                        <td>'
+                        ;?>
                        <button class="delete">
-                                <a href=""><i class="fas fa-trash-alt"></i></a>
+                                <a href="javascript:confirmDeleTe('<?php echo $path_del?>')"><i class="fas fa-trash-alt"></i></a>
                        </button>
                        <button class="edit">
-                                <a href="index.php?act=editCategory"><i class="fas fa-edit"></i></a>
+                                <a href="' . $path_edit . '"><i class="fas fa-edit"></i></a>
                        </button>
                         </td>
                     </tr>
+                    <?php
+                    } ?>
                     </tbody>
                 </table>
                 <div id="pagination"></div>
