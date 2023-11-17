@@ -91,12 +91,12 @@
                     </ul>
                 </div>
                 <div class="search-form">
-                    <form action="index.php?act=result_search" method="post">
+                    <form action="index.php?act=resultSearch" method="post">
                         <input name="search_sp" class="input-search" placeholder="    Tìm kiếm sản phẩm ..."
                                type="text">
 
                         <button name="btn-search" class="btn-search" type="submit">
-                            <a href="index.php?act=result_search"><i class="fa-solid fa-magnifying-glass"
+                            <a href="index.php?act=resultSearch"><i class="fa-solid fa-magnifying-glass"
                                                                      style="color: #ffffff;"></i></a>
                         </button>
                     </form>

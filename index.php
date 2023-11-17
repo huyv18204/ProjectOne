@@ -5,6 +5,7 @@ ini_set('display_errors', 1);
 session_start();
 include 'model/PDO.php';
 include 'model/user/login.php';
+include 'model/user/homepage.php';
 include 'views/header.php';
 
 if(isset($_GET["act"])){
@@ -17,8 +18,6 @@ if(isset($_GET["act"])){
             break;
         case "detailProduct":
             include "views/pages/detailProduct.php";
-            break;
-        case 'resultSearch':
             break;
         case 'register':
             if (isset($_POST['btn-register'])) {
@@ -114,6 +113,14 @@ if(isset($_GET["act"])){
             break;
         case 'order':
             include "views/pages/order.php";
+            break;
+        case 'resultSearch':
+            if (isset($_POST['btn-search'])) {
+                $search_sp = $_POST['search_sp'];
+                $list_sp = search_sp($search_sp);
+            }
+            $list_dm = select_all_danhmuc();
+            require_once 'views/pages/resultSearch.php';
             break;
 
 
