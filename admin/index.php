@@ -1,7 +1,9 @@
 <?php
+//ob_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include '../model/category/category.php';
+include '../model/product/product.php';
 include '../model/PDO.php';
 include '../model/admin/user.php';
 include 'views/header.php';
@@ -49,18 +51,82 @@ if(isset($_GET["act"])){
         case 'del-dm':
             if (isset($_GET['id'])) {
                 del_danhmuc($_GET['id']);
-                // setcookie("thong_bao", "Xoá thành công.", time() + 2);
             }
             header("location:index.php?act=listCategory");
             break; 
 // San pham
         case "listProduct":
+            $listsp= select_all_sanpham();
             include "views/product/listProduct.php";
             break;
         case "editProduct":
+                 if (isset($_GET['id'])) {
+                     $listsp = select_one_sanpham($_GET['id']);
+                 }
+                 $listdm = select_all_danhmuc();
             include "views/product/editProduct.php";
             break;
+                 case 'updateProduct':
+                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                         if (empty($_POST['name-product']) || empty($_POST['price'])) {
+                         } else {
+                             $id_category = $_POST['category'];
+                             $name_product = $_POST['name-product'];
+                             $price = $_POST['price'];
+                             $discount = $_POST['discount'];
+                             $chip = $_POST['chip'];
+                             $ram = $_POST['ram'];
+                             $screen = $_POST['screen'];
+                             $camera = $_POST['camera'];
+                             $camera_selfie = $_POST['camera_selfie'];
+                             $origin = $_POST['origin'];
+                             $id = $_POST['id'];
+                             $target_dir = "../upload/";
+                             $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                             if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                                 $image = $_FILES["img"]["name"];
+                             }
+                             update_sanpham($name_product, $price, $discount, $image, $id_category, $chip, $ram, $screen, $camera, $camera_selfie, $origin, $id);
+                             header('location:index.php?act=listProduct');
+                         }
+                     }
+                     $listdm = select_all_danhmuc();
+                     break;
+                 case 'deleteProduct':
+                     if (isset($_GET['id'])) {
+                         del_sanpham($_GET['id']);
+                     }
+                     header("location:index.php?act=listProduct");
+                     break;
         case "addProduct":
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $id_category = $_POST['category'];
+                $name_product = $_POST['name-product'];
+                $price = $_POST['price'];
+                $discount = $_POST['discount'];
+                $chip = $_POST['chip'];
+                $ram = $_POST['ram'];
+                $screen = $_POST['screen'];
+                $camera = $_POST['camera'];
+                $camera_selfie = $_POST['camera_selfie'];
+                $origin = $_POST['origin'];
+                $img = $_FILES['img']['name'];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                    $image = $_FILES["img"]["name"];
+                } else {
+                    $notify = "Không thể upload file";
+                }
+                if(empty($name_product) || empty($price) || empty($id_category)){
+                    $notify = "Không được để trống thông tin";
+                }else{
+                    insert_sanpham($name_product, $price,$discount, $img, $id_category, $chip,$ram,$screen,$camera,$camera_selfie,$origin);
+                    $notify = "Không được để trống thông tin";
+                    header('location:index.php?act=listProduct');
+                }
+            }
+            $listdm = select_all_danhmuc();
             include "views/product/addProduct.php";
             break;
 
