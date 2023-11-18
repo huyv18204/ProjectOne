@@ -16,7 +16,14 @@ if(isset($_GET["act"])){
             break;
         case "product":
             break;
-        case "detailProduct":
+        case "deltailProduct":
+            if (isset($_GET['id'])) {
+                $id_product = $_GET['id'];
+                $list_sp = select_one_sanpham($id_product);
+                extract($list_sp);
+//                $list_samekind = select_sp_samekind($id_product, $id_category);
+                $list_samekind = select_sp_samekind($id_product);
+            }
             include "views/pages/detailProduct.php";
             break;
         case 'register':
@@ -106,6 +113,8 @@ if(isset($_GET["act"])){
             include "views/pages/updateInformation.php";
             break;
         case 'products':
+            $list_sp = select_all_product();
+            $list_category = select_all_danhmuc();
             include "views/pages/product.php";
             break;
         case 'cart':
@@ -121,6 +130,14 @@ if(isset($_GET["act"])){
             }
             $list_dm = select_all_danhmuc();
             require_once 'views/pages/resultSearch.php';
+            break;
+        case 'category':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $list_sp = select_sp_by_dm($id);
+            }
+            $list_dm = select_all_danhmuc();
+            require_once 'views/pages/category.php';
             break;
 
 

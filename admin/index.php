@@ -2,8 +2,8 @@
 //ob_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-include '../model/category/category.php';
-include '../model/product/product.php';
+include '../model/admin/category.php';
+include '../model/admin/product.php';
 include '../model/PDO.php';
 include '../model/admin/user.php';
 include 'views/header.php';
@@ -30,7 +30,6 @@ if(isset($_GET["act"])){
                 } else {
                     $name_category = $_POST['name-category'];
                     $id = $_POST['id'];
-                    // setcookie("thong_bao", "Cập nhật thành công.", time() + 2);
                     update_danhmuc($name_category, $id);
                     header('location:index.php?act=listCategory');
                 }
@@ -73,7 +72,12 @@ if(isset($_GET["act"])){
                              $id_category = $_POST['category'];
                              $name_product = $_POST['name-product'];
                              $price = $_POST['price'];
-                             $discount = $_POST['discount'];
+//                             $discount = $_POST['discount'];
+                             if ($_POST['discount'] == ""){
+                                 $discount = 0;
+                             }else{
+                                 $discount = $_POST['discount'];
+                             }
                              $chip = $_POST['chip'];
                              $ram = $_POST['ram'];
                              $screen = $_POST['screen'];
@@ -103,7 +107,11 @@ if(isset($_GET["act"])){
                 $id_category = $_POST['category'];
                 $name_product = $_POST['name-product'];
                 $price = $_POST['price'];
-                $discount = $_POST['discount'];
+                if ($_POST['discount'] == ""){
+                    $discount = 0;
+                }else{
+                    $discount = $_POST['discount'];
+                }
                 $chip = $_POST['chip'];
                 $ram = $_POST['ram'];
                 $screen = $_POST['screen'];
