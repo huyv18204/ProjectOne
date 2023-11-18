@@ -176,12 +176,13 @@
 }
 
 .main {
-    margin-top: 40px;
+    margin-top: 70px;
     width: 100%;
+    margin-bottom: 70px;
 }
 
 .line {
-    width: 30%;
+    width: 27%;
     height: 1.5px;
     background-color: #d3d3d3;
     display: inline-block;
@@ -195,8 +196,9 @@
 }
 
 .img-product>a>img {
+    margin-top: 25px;
     width: 100px;
-    /*height: 100px;*/
+    height: 138px;
 }
 
 .product {
@@ -221,16 +223,19 @@
 }
 
 .discount {
-    background-color: #7AC142;
-    width: 75px;
-    height: 40px;
+    background-color: #df0201;
+    width: 80px;
+    height: 45px;
     position: absolute;
     display: flex;
+    left: 10px;
+
     justify-content: center;
     align-items: center;
-    font-size: 13px;
+    font-size: 14px;
     font-family: 'Roboto';
     color: white;
+    font-weight: bold;
 }
 
 .price-old {
@@ -263,7 +268,7 @@
 }
 
 .row-product {
-    margin-top: 50px;
+    margin-top: 70px;
 }
 
 /*FOOTER*/
@@ -688,7 +693,7 @@ h2.auth-title {
 /*DETAIL*/
 .container-deltail {
     margin-top: 30px;
-    height: 1850px;
+    height: 1500px;
 }
 
 .row-1-deltail {
@@ -806,7 +811,9 @@ h2.auth-title {
     font-size: 22px;
     margin-left: 10px;
 }
-
+.price-new{
+    margin-top: 15px;
+}
 .btn-add-buy {
     margin-top: 20px;
 }
@@ -834,27 +841,12 @@ h2.auth-title {
     border-radius: 10px;
 }
 
-/* ------------decription------- */
-.decription {
-    display: grid;
-    grid-template-columns: 10% 80% 10%;
-    margin-top: 25px;
-    max-height: 270px;
-    overflow: auto;
-}
-
-.decription p {
-    font-size: 18px;
-    line-height: 35px;
-}
-
-
 /* ---------------comment------------- */
 
 .row-3-deltail {
+    margin-top: 30px;
     display: grid;
     grid-template-columns: 10% 80% 10%;
-    margin-top: 30px;
 }
 
 
@@ -975,6 +967,7 @@ h2.auth-title {
     width: 1200px;
     margin: auto;
     min-height: 600px;
+    margin-bottom: 50px;
 }
 
 .main-product {
@@ -1041,20 +1034,19 @@ h2.auth-title {
 .product-col-2 {
     background-color: #333333;
     height: 425px;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 
 .nav-bar-product-menu a {
     text-decoration: none;
     color: white;
-    font-size: 12px;
+    font-size: 16px;
     margin-left: 10px;
 }
 
 .nav-bar-product-menu img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
 }
 
 /* CART */

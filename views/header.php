@@ -76,13 +76,13 @@
 
                         <li><a class="hover-nav" href="index.php?act=products">IPHONE</a>
                             <ul class="iphone-nav">
-                                <li><a href="#">iPhone 15 Series</a></li>
-                                <li><a href="#">iPhone 14 Series</a></li>
-                                <li><a href="#">iPhone 13 Series</a></li>
-                                <li><a href="#">iPhone 12 Series</a></li>
+                                <li><a href="index.php?act=category&id=2">iPhone 15 Series</a></li>
+                                <li><a href="index.php?act=category&id=3">iPhone 14 Series</a></li>
+                                <li><a href="index.php?act=category&id=4">iPhone 13 Series</a></li>
+                                <li><a href="index.php?act=category&id=5">iPhone 12 Series</a></li>
                             </ul>
                         </li>
-                        <li><a class="hover-nav" href="index.php?act=products">PHỤ KIỆN</a>
+                        <li><a class="hover-nav" href="index.php?act=category&id=7">PHỤ KIỆN</a>
                         </li>
                         <li><a class="hover-nav" href="#">GIỚI THIỆU</a>
                         </li>

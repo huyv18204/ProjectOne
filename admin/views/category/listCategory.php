@@ -42,7 +42,7 @@
                                 <a href="javascript:confirmDeleTe('<?php echo $path_del?>')"><i class="fas fa-trash-alt"></i></a>
                        </button>
                        <button class="edit">
-                                <a href="' . $path_edit . '"><i class="fas fa-edit"></i></a>
+                                <a href="<?php echo $path_edit?>"><i class="fas fa-edit"></i></a>
                        </button>
                         </td>
                     </tr>

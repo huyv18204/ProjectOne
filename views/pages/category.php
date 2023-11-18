@@ -33,24 +33,24 @@
     <?php
     } ?>
 
-</div>
-</div>
-</div>
+            </div>
+        </div>
+    </div>
 <div class="product-col-2">
     <div class="nav-bar-product">
         <ul class="nav-bar-product-menu">
             <?php
-            foreach ($list_category as $category){
+            foreach ($list_dm as $category){
                 extract($category);
 
-            echo '
+                echo '
             
             <li>
                 <img src="image/navbar_1.svg" alt="">
                 <a href="index.php?act=category&id='.$id_category.'">'.$name_category.'</a>
             </li>';
             }
-?>
+            ?>
         </ul>
     </div>
 </div>
