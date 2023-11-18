@@ -1,3 +1,4 @@
+
 <body>
 <div class="container-admin">
     <?php
@@ -9,7 +10,8 @@
         </div>
         <div class="commodities-container">
             <div class="function-commodities">
-                <button class="add-commodities" type="submit"><a href="index.php?act=addProduct">Tạo sản phẩm mới</a>
+                <button class="add-commodities" type="submit"><a href="index.php?act=addProduct">Tạo sản phẩm
+                        mới</a>
                 </button>
                 <button class="select-all-commodities" type="submit"><a href="">Chọn tất cả</a></button>
                 <button class="unchecker-commodities" type="submit"><a href="">Bỏ chọn tất cả</a></button>
@@ -31,23 +33,36 @@
                     </tr>
                     </thead>
                     <tbody class="product-list">
+                    <?php
+                    // var_dump($listsp);
+                    // die;
+                    foreach ($listsp as $value) {
+                        extract($value);
+                        $path_edit = 'index.php?act=editProduct&id=' . $id_product;
+                        $path_del = 'index.php?act=deleteProduct&id=' . $id_product;
+                        echo '
                     <tr>
                         <td width="10"><input type="checkbox"></td>
-                        <td>1</td>
-                        <td>IPHONE 15</td>
-                        <td><img width="70px" src="../image/iphone.png" alt=""></td>
-                        <td>100000</td>
-                        <td>50000</td>
-                        <td>Iphone 15 series</td>
+                        <td>' . $id_product . '</td>
+                        <td>' . $name_product . '</td>
+                         <td><img width="70px" src="../upload/' . $img_product . '" alt=""></td>
+                        <td>' . $price . ' đ</td>
+                        <td>'.$discount.'</td>
+                        <td>' . $name_category . '</td>
                         <td>
+                                            ';?>
+
                        <button class="delete">
-                                <a href="index.php?act=delProduct"><i class="fas fa-trash-alt"></i></a>
+                                <a href="javascript:confirmDeleTe('<?php echo $path_del?>')"><i class="fas fa-trash-alt"></i></a>
                        </button>
                        <button class="edit">
-                                <a href="index.php?act=editProduct"><i class="fas fa-edit"></i></a>
+                                <a href="<?= $path_edit?>"><i class="fas fa-edit"></i></a>
                        </button>
 
                         </td>
+<?php
+                    } ?>
+
                     </tbody>
                 </table>
                 <div id="pagination"></div>
