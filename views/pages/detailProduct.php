@@ -25,16 +25,39 @@ if(isset($list_sp)){
                 <div class="information-deltail">
                     <h1><?= $name_product ?></h1>
                     <div class="deltail-content">
-                        <ul>
+                        <?php
+                        if($id_category == 7){?>
+                                <ul>
+                                    <li><span><strong>Thể loại:</strong>Phụ Kiện</span></li>
+                                    <li><span><strong>Sử dụng cho thiết bị:</strong>iPhone, iPad, Macbook</span></li>
+                                    <li><span><strong>Cam kết:</strong>Hàng chính hãng</span></li>
+                                    <li><span><strong>Bảo hành:</strong>12 tháng</span></li>
+                                </ul>
+
+                        <?php }else{ ?>
+                            <ul>
                             <li><span><strong>Chip:</strong><?= $chip ?></span></li>
                             <li><span><strong>Ram:</strong><?= $ram ?></span></li>
-                            <li><span><strong>Màn hình:</strong>1<?= $screen ?></span></li>
+                            <li><span><strong>Màn hình:</strong><?= $screen ?></span></li>
                             <li><span><strong>Camera sau</strong><?= $camera ?></span></li>
                             <li><span><strong>Camera trước:</strong><?= $camera_selfie ?></span></li>
                             <li><span><strong>Xuất xứ:</strong><?= $origin ?></span></li>
                             <li><span><strong>Dung lượng:</strong>1.24kg</span></li>
                             <li><span><strong>Màu sắc:</strong>MLY13 (Starlight)</span></li>
                         </ul>
+
+                        <?php }
+                        ?>
+<!--                        <ul>-->
+<!--                            <li><span><strong>Chip:</strong>--><?//= $chip ?><!--</span></li>-->
+<!--                            <li><span><strong>Ram:</strong>--><?//= $ram ?><!--</span></li>-->
+<!--                            <li><span><strong>Màn hình:</strong>1--><?//= $screen ?><!--</span></li>-->
+<!--                            <li><span><strong>Camera sau</strong>--><?//= $camera ?><!--</span></li>-->
+<!--                            <li><span><strong>Camera trước:</strong>--><?//= $camera_selfie ?><!--</span></li>-->
+<!--                            <li><span><strong>Xuất xứ:</strong>--><?//= $origin ?><!--</span></li>-->
+<!--                            <li><span><strong>Dung lượng:</strong>1.24kg</span></li>-->
+<!--                            <li><span><strong>Màu sắc:</strong>MLY13 (Starlight)</span></li>-->
+<!--                        </ul>-->
                     </div>
                     <div class="price-deltail">
 
@@ -87,12 +110,15 @@ if(isset($list_sp)){
                     <div class="row-product">
                         <?php foreach ($list_samekind as $product_same) {
                             extract($product_same);
-                        $money = ($discount / $price) . 100;
-                        $persent = round($money, 2);
+                        $money = (($price - $discount) / $price) * 100;
+                        $persent = round($money, 0);
                             $path_deltail = 'index.php?act=deltailProduct&id=' . $id_product;
                             echo '
-                                             <div class="product">
-                                            <span class="discount">Giảm '.$persent.'%</span>
+                                             <div class="product">';
+                                            if($discount != 0){
+                                                echo '<span class="discount">Giảm '.$persent.'%</span>';
+                                            }
+                                            echo'
                                             <div class="img-product">
                                                 <a href="' . $path_deltail . '"><img src="upload/' . $img_product . '" alt=""></a>
                                             </div>

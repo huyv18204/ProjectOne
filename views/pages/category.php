@@ -5,12 +5,16 @@
             <div class="product-list">
                 <?php foreach ($list_sp as $product) {
                 extract($product);
-                $money = ($discount / $price) . 100;
-                $persent = round($money, 2);
+                $money = (($price - $discount) / $price) * 100;
+                $persent = round($money, 0);
                 $path_deltail = 'index.php?act=deltailProduct&id=' . $id_product;
                 echo '
-                                             <div class="product">
-                                            <span class="discount">Giảm '.$persent.'%</span>
+                                             <div class="product">';
+                if($discount != 0){
+                    echo '<span class="discount">Giảm '.$persent.'%</span>';
+                }
+                echo '
+                                            
                                             <div class="img-product">
                                                 <a href="' . $path_deltail . '"><img src="upload/' . $img_product . '" alt=""></a>
                                             </div>

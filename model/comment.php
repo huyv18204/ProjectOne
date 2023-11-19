@@ -14,14 +14,19 @@ function coutn_comment($id)
 
 function select_all_comment()
 {
-    $sql = "select id, content, comment.id_user,user.id_user,id_pro,date_comment,id_sanpham,ten_sanpham,name from user inner join comment on comment.id_user = user.id_user inner join sanpham on id_pro = id_sanpham order by id desc ";
+    $sql = "select 
+    id_comment,account, content, comment.id_user,user.id_user,comment.id_product,date_comment,product.id_product,name_product,name_user
+    from user inner join comment 
+    on comment.id_user = user.id_user 
+    inner join product 
+    on comment.id_product = product.id_product order by id_comment desc ";
     $list = pdo_query($sql);
     return $list;
 }
 
 function del_comment($id)
 {
-    $sql = " delete from comment where id = '$id'";
+    $sql = " delete from comment where id_comment = '$id'";
     pdo_execute($sql);
 }
 
