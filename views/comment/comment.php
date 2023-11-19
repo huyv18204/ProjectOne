@@ -1,8 +1,13 @@
 <?php
-//session_start();
-//include '../../model/model.php';
-//include '../../model/comment.php';
-//?>
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include '../../model/PDO.php';
+include '../../model/comment.php';
+$id_product = $_REQUEST['id_product'];
+$list = select_user_comment($id_product);
+$count_comment = coutn_comment($id_product);
+?>
 
 <!doctype html>
 <html lang="en">
@@ -16,12 +21,12 @@
 </head>
 <body>
 <div class="comment-container">
-<!--    --><?php //if (isset($_SESSION['account'])) {?>
-        <img src="image/User.png" alt="">
+    <?php if (isset($_SESSION['account'])) {?>
+        <img src="image/user.png" alt="">
         <div class="comment-form">
             <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                 <div id="comment-form">
-                    <input type="hidden" name="id_pro" value="<?php echo $id_pro; ?>">
+                    <input type="hidden" name="id_product" value="<?php echo $id_product ?>">
                     <input name="content-comment" id="comment_input" placeholder="    Nhập bình luận của bạn..." type="text">
                 </div>
                 <div id="btn-comment">
@@ -29,34 +34,50 @@
                 </div>
             </form>
         </div>
-<!--    --><?php //} else { ?>
-<!--        <p><a href="index.php?act=login">Đăng nhập</a> để bình luận.</p>-->
-<!--    --><?php //} ?>
+    <?php } else { ?>
+        <p><a href="index.php?act=login">Đăng nhập</a> để bình luận.</p>
+    <?php } ?>
 </div>
 
 <div class="list-comment">
-    <h4>4 Bình luận</h4>
+    <h4><?php echo $count_comment ?> Bình luận</h4>
     <div class="line-deltail"></div>
     <div id="comment-section">
+        <?php
+        foreach ($list as $comment) {
+            extract($comment);
+            echo '
                         <div class="comment">
-            <div class="content-comment">
-                <img src="image/User.png" alt="">
-                <h4>Vũ Quốc Huy</h4>
-            </div>
-            <p>Đấm nhau không</p>
-        </div>
+            <div class="content-comment">';
+                if(isset($img_user)){
+                    echo' <img src="upload/'.$img_user.'" alt="">';
+                }else{
+                    echo ' <img src="image/user.png" alt="">';
+                };
 
+                if(isset($name_user)){
+                    echo '<h4>'.$name_user.'</h4>';
+                }else{
+                    echo '<h4>'.$account.'</h4>';
+                }
+            echo '
+            </div>
+            <p>' . $content . '</p>
+        </div>            
+            ';
+        }
+        ?>
     </div>
-<!--    --><?php
-//    if (isset($_POST['btn-submit'])) {
-//        $content = $_POST['content-comment'];
-//        $id_user = $_SESSION['account']['id_user'];
-//        $id_pro = $_POST['id_pro'];
-//        $date_comment = date("h:i:sa Y/m/d");
-//        insert_comment($content,$id_user, $id_pro, $date_comment);
-//        header("Location:" . $_SERVER['HTTP_REFERER']);
-//    }
-//    ?>
+    <?php
+    if (isset($_POST['btn-submit'])) {
+        $content = $_POST['content-comment'];
+        $id_user = $_SESSION['account']['id_user'];
+        $id_product = $_POST['id_product'];
+        $date_comment = date("h:i:sa Y/m/d");
+        insert_comment($id_user,$id_product,$date_comment,$content);
+        header("Location:" . $_SERVER['HTTP_REFERER']);
+    }
+    ?>
 </div>
 </body>
 </html>
