@@ -166,7 +166,7 @@
             <div class="new">
                 <div class="title-container">
                     <div class="line"></div>
-                    <h1 class="title-main">PHỤ KIỆN</h1>
+                    <h1 class="title-main">PHỤ KIỆN ĐIỆN THOẠI</h1>
                     <div class="line"></div>
                 </div>
 

@@ -126,7 +126,7 @@ if(isset($list_sp)){
             <script>
             $(document).ready(function() {
                 $("#comment").load("views/comment/comment.php", {
-                    idpro: <?php  echo $list_sp['id_sanpham']; ?>
+                    id_product: <?php  echo $list_sp['id_product']; ?>
                });
            });
             </script>
