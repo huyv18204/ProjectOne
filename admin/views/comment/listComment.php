@@ -25,27 +25,28 @@
                     <?php
                     foreach ($list_comment as $comment) {
                         extract($comment);
-                        $path_del = 'index.php?act=del-comment&id=' . $id;
+                        $path_del = 'index.php?act=deleteComment&id=' . $id_comment;
                         echo '
 
                                             <tbody class="product-list">
                     <tr>
                         <td width="10"><input type="checkbox"></td>
-                        <td>' . $id . '</td>
+                        <td>' . $id_comment . '</td>
                         <td>' . $content . '</td>
-                        <td>' . $ten_sanpham . '</td>
-                        <td>' . $name . '</td>
+                        <td>' . $name_product . '</td>';
+                    if (isset($name_user)){
+                        echo "<td>$name_user</td>";
+                    }else{
+                        echo "<td>$account</td>";
+                    }
+                        echo '
                         <td>' . $date_comment . '</td>
-                        <td><button class="delete">
-                                <a href="' . $path_del . '"><i class="fas fa-trash-alt"></i></a>
+                        <td><button class="delete">'?>
+                                <a href="javascript:confirmDeleTe('<?php echo $path_del?>')"><i class="fas fa-trash-alt"></i></a>
                        </button></td>
                     </tr>
                     </tbody>
-
-                        ';
-                    }
-                    ?>
-
+                        <?php } ?>
                 </table>
                 <div id="pagination"></div>
             </div>

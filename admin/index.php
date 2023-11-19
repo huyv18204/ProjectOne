@@ -2,6 +2,7 @@
 //ob_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+include '../model/comment.php';
 include '../model/admin/category.php';
 include '../model/admin/product.php';
 include '../model/PDO.php';
@@ -212,7 +213,14 @@ if(isset($_GET["act"])){
             break;
 
         case "listComment":
+            $list_comment = select_all_comment();
             include "views/comment/listComment.php";
+            break;
+        case "deleteComment":
+            if (isset($_GET['id'])) {
+                del_comment($_GET['id']);
+            }
+            header("location:index.php?act=listComment");
             break;
     }
 }else{
