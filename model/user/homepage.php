@@ -43,13 +43,13 @@ function select_sp_by_dm($id)
 
 function select_all_product()
 {
-    $sql = "SELECT * FROM product order by id_product  desc limit 0,9";
+    $sql = "SELECT * FROM product where id_category != 7 order by id_product desc limit 0,9";
     $listsp = pdo_query($sql);
     return $listsp;
 }
 function select_all_phukien()
 {
-    $sql = "SELECT * FROM product order by id_product=7 limit 0,6";
+    $sql = "SELECT * FROM product where id_category = 7 order by id_product desc limit 0,6";
     $listsp = pdo_query($sql);
     return $listsp;
 }
