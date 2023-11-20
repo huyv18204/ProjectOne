@@ -47,4 +47,10 @@ function select_all_product()
     $listsp = pdo_query($sql);
     return $listsp;
 }
+function select_all_phukien()
+{
+    $sql = "SELECT * FROM product order by id_product=7 limit 0,6";
+    $listsp = pdo_query($sql);
+    return $listsp;
+}
 ?>

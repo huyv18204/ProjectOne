@@ -6,12 +6,15 @@ session_start();
 include 'model/PDO.php';
 include 'model/user/login.php';
 include 'model/user/homepage.php';
+// include 'model/admin/product.php';
 include 'views/header.php';
 
-if(isset($_GET["act"])){
+if (isset($_GET["act"])) {
     $act = $_GET["act"];
-    switch ($act){
+    switch ($act) {
         case "home":
+            $listsp = select_all_product();
+            $listpk = select_all_phukien();
             include 'views/pages/home.php';
             break;
         case "product":
@@ -21,7 +24,7 @@ if(isset($_GET["act"])){
                 $id_product = $_GET['id'];
                 $list_sp = select_one_sanpham($id_product);
                 extract($list_sp);
-//                $list_samekind = select_sp_samekind($id_product, $id_category);
+                //                $list_samekind = select_sp_samekind($id_product, $id_category);
                 $list_samekind = select_sp_samekind($id_product);
             }
             include "views/pages/detailProduct.php";
@@ -105,7 +108,7 @@ if(isset($_GET["act"])){
                 $name = $_POST['name'];
                 $phone = $_POST['phone'];
                 $address = $_POST['address'];
-                update_user($id_user,$img_user, $pass, $name, $email, $phone, $address);
+                update_user($id_user, $img_user, $pass, $name, $email, $phone, $address);
                 $_SESSION['account'] = select_account($account, $pass);
                 $notify = "Cập nhật thành công";
 
@@ -142,7 +145,7 @@ if(isset($_GET["act"])){
 
 
     }
-}else{
+} else {
     include 'views/pages/home.php';
 }
 
