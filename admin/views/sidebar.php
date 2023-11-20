@@ -1,7 +1,12 @@
 <div class="col-1-admin">
     <div class="information-admin">
-        <img src="../image/User.png" alt="">
-        <h3>Quốc Huy</h3>
+        <img src="../upload/<?= $_SESSION['account']['img_user']; ?>" alt="">
+        <?php if(isset($_SESSION['account']['name_user'])){ ?>
+            <h3><?= $_SESSION['account']['name_user']; ?></h3>
+        <?php }else{ ?>
+            <h3><?= $_SESSION['account']['account']; ?></h3>
+       <?php } ?>
+
         <div class="line-admin"></div>
     </div>
     <div class="function-admin">
