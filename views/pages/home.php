@@ -7,6 +7,7 @@
     </div>
     <main>
         <section class="main">
+            <!-- --------------------- -->
             <div class="new">
                 <div class="title-container">
                     <div class="line"></div>
@@ -14,77 +15,50 @@
                     <div class="line"></div>
                 </div>
 
+
                 <div class="product-container">
                     <div class="row-product">
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
+                        <?php foreach ($listsp as $product) {
+                            extract($product);
+                            $money = (($price - $discount) / $price) * 100;
+                            $persent = round($money, 0);
+                            $path_deltail = 'index.php?act=deltailProduct&id=' . $id_product;
+                            echo '
+                                             <div class="product">';
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
+                            if ($discount != 0) {
+                                echo '<span class="discount">Giảm ' . $persent . '%</span>';
+                            }
+                            echo '
+                                            <div class="img-product">
+                                                <a href="' . $path_deltail . '"><img src="upload/' . $img_product . '" alt=""></a>
+                                            </div>
+                                            <div class="price-product">' ?>
+                        <?php
+                            if ($discount == 0) {
+                                echo '<div class="price-new">' . $price . '<p> VNĐ</p>';
+                            } else {
+                                echo '<s class="price-old">' . $price . '<p>VNĐ</p></s>
+                                                      <div class="price-new">' . $discount . '<p>VNĐ</p>
+                                                     ';
+                            } ?>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
                     </div>
                 </div>
+                <h4><a href="<?= $path_deltail ?>">
+                        <?= $name_product ?>
+                    </a></h4>
             </div>
 
+            <?php
+                        } ?>
+            </div>
+            </div>
+            </div>
+            <!-- --------------------- -->
             <div class="new">
                 <div class="title-container">
                     <div class="line"></div>
@@ -94,75 +68,46 @@
 
                 <div class="product-container">
                     <div class="row-product">
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
+                        <?php foreach ($listsp as $product) {
+                            extract($product);
+                            $money = (($price - $discount) / $price) * 100;
+                            $persent = round($money, 0);
+                            $path_deltail = 'index.php?act=deltailProduct&id=' . $id_product;
+                            echo '
+                                             <div class="product">';
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
+                            if ($discount != 0) {
+                                echo '<span class="discount">Giảm ' . $persent . '%</span>';
+                            }
+                            echo '
+                                            <div class="img-product">
+                                                <a href="' . $path_deltail . '"><img src="upload/' . $img_product . '" alt=""></a>
+                                            </div>
+                                            <div class="price-product">' ?>
+                        <?php
+                            if ($discount == 0) {
+                                echo '<div class="price-new">' . $price . '<p> VNĐ</p>';
+                            } else {
+                                echo '<s class="price-old">' . $price . '<p>VNĐ</p></s>
+                                                      <div class="price-new">' . $discount . '<p>VNĐ</p>
+                                                     ';
+                            } ?>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
-
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
                     </div>
                 </div>
+                <h4><a href="<?= $path_deltail ?>">
+                        <?= $name_product ?>
+                    </a></h4>
             </div>
 
+            <?php
+                        } ?>
+            </div>
+            </div>
+            </div>
+            <!-- --------------------- -->
             <div class="new">
                 <div class="title-container">
                     <div class="line"></div>
@@ -172,73 +117,44 @@
 
                 <div class="product-container">
                     <div class="row-product">
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
+                        <?php foreach ($listpk as $pk) {
+                    extract($pk);
+                    $money = (($price - $discount) / $price) * 100;
+                    $persent = round($money, 0);
+                    $path_deltail = 'index.php?act=deltailProduct&id=' . $id_product;
+                    echo '
+                                             <div class="product">';
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
+                    if ($discount != 0) {
+                        echo '<span class="discount">Giảm ' . $persent . '%</span>';
+                    }
+                    echo '
+                                            <div class="img-product">
+                                                <a href="' . $path_deltail . '"><img src="upload/' . $img_product . '" alt=""></a>
+                                            </div>
+                                            <div class="price-product">' ?>
+                        <?php
+                    if ($discount == 0) {
+                        echo '<div class="price-new">' . $price . '<p> VNĐ</p>';
+                    } else {
+                        echo '<s class="price-old">' . $price . '<p>VNĐ</p></s>
+                                                      <div class="price-new">' . $discount . '<p>VNĐ</p>
+                                                     ';
+                    } ?>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
 
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
-                        <div class="product">
-                            <span class="discount">Giảm 16%</span>
-                            <div class="img-product">
-                                <a href=""><img src="image/iphone.png" alt=""></a>
-                            </div>
-                            <div class="price-product">
-                                <s class="price-old">29,000,000<p>VNĐ</p></s>
-
-                                <div class="price-new">10,000,000<p>VNĐ</p>
-                                </div>
-                            </div>
-                            <h4><a href="">Iphone 15 ProMax</a></h4>
-                        </div>
                     </div>
                 </div>
+                <h4><a href="<?= $path_deltail ?>">
+                        <?= $name_product ?>
+                    </a></h4>
+            </div>
+
+            <?php
+                } ?>
+            </div>
+            </div>
             </div>
             </div>
         </section>
