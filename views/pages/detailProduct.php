@@ -7,6 +7,18 @@ if(isset($list_sp)){
 
 <main class="deltail">
     <div class="container-deltail">
+        <form action="index.php?act=addToCart" method="post" >
+            <input name="id_product" value="<?=$id_product ?>" type="hidden">
+            <input name="name_product" value="<?=$name_product ?>" type="hidden">
+            <input name="img_product" value="<?=$img_product ?>" type="hidden">
+            <input name="price" value="<?=$price ?>" type="hidden">
+            <input name="discount" value="<?=$discount ?>" type="hidden">
+            <input name="chip" value="<?=$chip ?>" type="hidden">
+            <input name="ram" value="<?=$ram ?>" type="hidden">
+            <input name="screen" value="<?=$screen ?>" type="hidden">
+            <input name="camera" value="<?=$camera ?>" type="hidden">
+            <input name="camera_selfie" value="<?=$camera_selfie ?>" type="hidden">
+            <input name="origin" value="<?=$origin ?>" type="hidden">
         <div class="row-1-deltail">
             <div></div>
             <div class="col-1-deltail">
@@ -46,18 +58,7 @@ if(isset($list_sp)){
                             <li><span><strong>Màu sắc:</strong>MLY13 (Starlight)</span></li>
                         </ul>
 
-                        <?php }
-                        ?>
-<!--                        <ul>-->
-<!--                            <li><span><strong>Chip:</strong>--><?//= $chip ?><!--</span></li>-->
-<!--                            <li><span><strong>Ram:</strong>--><?//= $ram ?><!--</span></li>-->
-<!--                            <li><span><strong>Màn hình:</strong>1--><?//= $screen ?><!--</span></li>-->
-<!--                            <li><span><strong>Camera sau</strong>--><?//= $camera ?><!--</span></li>-->
-<!--                            <li><span><strong>Camera trước:</strong>--><?//= $camera_selfie ?><!--</span></li>-->
-<!--                            <li><span><strong>Xuất xứ:</strong>--><?//= $origin ?><!--</span></li>-->
-<!--                            <li><span><strong>Dung lượng:</strong>1.24kg</span></li>-->
-<!--                            <li><span><strong>Màu sắc:</strong>MLY13 (Starlight)</span></li>-->
-<!--                        </ul>-->
+                        <?php } ?>
                     </div>
                     <div class="price-deltail">
 
@@ -76,8 +77,8 @@ if(isset($list_sp)){
 
                     </div>
                     <div class="btn-add-buy">
-                        <button class="add-product"><a href="">THÊM VÀO GIỎ HÀNG</a></button>
-                        <button class="buy-product"><a href="">MUA NGAY</a></button>
+                        <button name="btnAddToCart" class="add-product"><span>THÊM VÀO GIỎ HÀNG</span></button>
+                        <button class="buy-product"><span>MUA NGAY</span></button>
                     </div>
                 </div>
             </div>
@@ -98,6 +99,7 @@ if(isset($list_sp)){
                 </div>
             </div>
         </div>
+        </form>
         <div class="row-2-deltail">
             <section class="main">
                 <div class="title-container">
@@ -113,7 +115,7 @@ if(isset($list_sp)){
                         $money = (($price - $discount) / $price) * 100;
                         $persent = round($money, 0);
                             $path_deltail = 'index.php?act=deltailProduct&id=' . $id_product;
-                            echo '
+                            echo '  
                                              <div class="product">';
                                             if($discount != 0){
                                                 echo '<span class="discount">Giảm '.$persent.'%</span>';
