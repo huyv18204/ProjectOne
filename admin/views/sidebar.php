@@ -34,18 +34,21 @@
                     Luận</a>
             </li>
             <li>
+                <i class="fa-solid fa-basket-shopping" style="color: #ffffff;"></i><a href="index.php?act=listOrders">Quản Lí Đơn Hàng</a>
+            </li>
+            <li>
                 <i class="fa-solid fa-chart-simple" style="color: #ffffff;"></i><a
                     href="index.php?act=statistical">Thống
                     kê</a>
             </li>
-            <li>
-                <i class="fa-solid fa-user" style="color: #ffffff;"></i><a href="">Tài khoản</a>
-            </li>
+<!--            <li>-->
+<!--                <i class="fa-solid fa-user" style="color: #ffffff;"></i><a href="">Tài khoản</a>-->
+<!--            </li>-->
         </ul>
     </div>
     <div class="logout-container">
         <form action="" method="post">
-            <button class="logout" type="submit"><a href="index.php?act=logout">Đăng Xuất</a></button>
+            <button class="logout" type="submit"><a href="../index.php?act=logout">Đăng Xuất</a></button>
         </form>
     </div>
 </div>

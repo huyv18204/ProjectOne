@@ -16,19 +16,42 @@ window.addEventListener("click", function () {
     categoryList.style.display = "none";
 });
 
-let value = 1;
+// function increaseValue(button) {
+//     let parent = button.parentElement;
+//     let quantity_old = parent.children[1];
+//     let quantity_new = parseInt(quantity_old.innerHTML) + 1;
+//     quantity_old.innerText = quantity_new;
+// }
+//
+// function reduceValue(button) {
+//     let parent = button.parentElement;
+//     let quantity_old = parent.children[1];
+//     let quantity_new = parseInt(quantity_old.innerHTML) - 1;
+//     if (quantity_new <= 0){
+//         quantity_new = 1;
+//     }
+//     quantity_old.innerText = quantity_new;
+//
+// }
 
-function increaseValue() {
-    value += 1;
-    document.getElementById('displays').innerText = value;
+function increaseValue(button) {
+    var displayElement = button.parentElement.querySelector('#display');
+    var quantity = parseInt(displayElement.value);
+
+    quantity += 1;
+    displayElement.value = quantity;
 }
-function reduceValue() {
-    value -= 1;
-    if (value <= 0) {
-        value = 1
+
+function reduceValue(button) {
+    var displayElement = button.parentElement.querySelector('#display');
+    var quantity = parseInt(displayElement.value);
+
+    if (quantity > 1) {
+        quantity -= 1;
+        displayElement.value = quantity;
     }
-    document.getElementById('displays').innerText = value;
 }
+
 
 $(document).ready(function () {
     $('.row-product').slick(

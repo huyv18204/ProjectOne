@@ -37,4 +37,10 @@ function select_one_user($id)
     return $list;
 
 }
+function select_account($account, $password)
+{
+    $sql = "select * from user where account = '$account' and password = '$password'";
+    $list = pdo_query_one($sql);
+    return $list;
+}
 ?>
