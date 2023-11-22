@@ -1,13 +1,14 @@
 <?php
 //ob_start();
 session_start();
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include '../model/comment.php';
 include '../model/admin/category.php';
 include '../model/admin/product.php';
 include '../model/PDO.php';
 include '../model/admin/user.php';
+include '../model/admin/orders.php';
 if($_SESSION['account']['role'] == 1) {
     include 'views/header.php';
 
@@ -224,6 +225,24 @@ if($_SESSION['account']['role'] == 1) {
                     del_comment($_GET['id']);
                 }
                 header("location:index.php?act=listComment");
+                break;
+            case "listOrders":
+                $listOrders = selectALlOrders();
+                include 'views/orders/listOrders.php';
+                break;
+            case "detailOrders":
+                if($_GET['codeOder']){
+                    $code_order = $_GET['codeOder'];
+                }
+                $listOrdersDetail = selectALlOrdersDetail($code_order);
+                include 'views/orders/detailOrders.php';
+                break;
+            case "updateStatus":
+                if($_GET['codeOder']){
+                    $code_order = $_GET['codeOder'];
+                }
+                $updateStatus = updateStatus($code_order);
+                header("location:index.php?act=listOrders");
                 break;
         }
     } else {
