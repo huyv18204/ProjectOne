@@ -2,10 +2,10 @@
     <div class="information-admin">
         <img src="../upload/<?= $_SESSION['account']['img_user']; ?>" alt="">
         <?php if(isset($_SESSION['account']['name_user'])){ ?>
-            <h3><?= $_SESSION['account']['name_user']; ?></h3>
+        <h3><?= $_SESSION['account']['name_user']; ?></h3>
         <?php }else{ ?>
-            <h3><?= $_SESSION['account']['account']; ?></h3>
-       <?php } ?>
+        <h3><?= $_SESSION['account']['account']; ?></h3>
+        <?php } ?>
 
         <div class="line-admin"></div>
     </div>
@@ -34,16 +34,17 @@
                     Luận</a>
             </li>
             <li>
-                <i class="fa-solid fa-basket-shopping" style="color: #ffffff;"></i><a href="index.php?act=listOrders">Quản Lí Đơn Hàng</a>
+                <i class="fa-solid fa-basket-shopping" style="color: #ffffff;"></i><a
+                    href="index.php?act=listOrders">Quản Lí Đơn Hàng</a>
             </li>
             <li>
                 <i class="fa-solid fa-chart-simple" style="color: #ffffff;"></i><a
                     href="index.php?act=statistical">Thống
                     kê</a>
             </li>
-<!--            <li>-->
-<!--                <i class="fa-solid fa-user" style="color: #ffffff;"></i><a href="">Tài khoản</a>-->
-<!--            </li>-->
+            <!--            <li>-->
+            <!--                <i class="fa-solid fa-user" style="color: #ffffff;"></i><a href="">Tài khoản</a>-->
+            <!--            </li>-->
         </ul>
     </div>
     <div class="logout-container">

@@ -16,7 +16,7 @@
 <!--                    </div>-->
 <!--                    <p class="auth-sgt">hoặc:</p>-->
 <!--                </div>-->
-                <form class="login-form" method="post" action="index.php?act=login">
+                <form class="login-form" method="post" action="index.php?act=forgotPassword">
                     <input name="account" type="text" class="auth-form-input" placeholder="Tên tài khoản">
                     <div class="input-icon">
                         <input name="email" type="text" class="auth-form-input" placeholder="Email">
@@ -28,8 +28,9 @@
 <!--                        <span> Lưu mật khẩu.</span>-->
 <!--                    </label>-->
                     <div class="footer-action">
-                        <input name="btn-submit" type="submit" value="Gửi" class="auth-submit">
+<!--                        <input name="btn-submit" type="submit" value="Gửi" class="auth-submit">-->
 <!--                        <a href="index.php?act=register" class="auth-btn-direct">Gửi</a>-->
+                        <button name="abc">Gửi</button>
                     </div>
                 </form>
                 <div class="auth-forgot-password">

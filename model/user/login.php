@@ -27,4 +27,16 @@ function change_pass($new_pass,$id_user){
     $sql = "update user set password = '$new_pass' where id_user = '$id_user'";
     pdo_execute($sql);
 }
+
+function reset_pass($repass,$account,$email){
+    $sql = "update user set password = '$repass' where account = '$account' and email = '$email'";
+    pdo_execute($sql);
+}
+
+function check_inFor($account, $email)
+{
+    $sql = "select * from user where account = '$account' and email = '$email '";
+    $list = pdo_query_one($sql);
+    return $list;
+}
 ?>

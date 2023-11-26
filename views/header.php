@@ -49,6 +49,7 @@
                                     <li><a href="admin/index.php?act=listProduct">Quản Lí Trang Web</a></li>
                                     ';
                                     }?>
+                                        <li><a href="index.php?act=myOrders">Đơn Mua</a></li>
                                     <li><a href="index.php?act=changePassword">Đổi Mật Khẩu</a></li>
                                     <li>
                                         <form action="index.php?act=home" method="post">
