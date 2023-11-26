@@ -13,8 +13,8 @@
                         <div>
                             <lable>Tên Tài Khoản: </lable>
                         </div>
-                        <div class="inFor_input readonly"><input name="account" readonly type="text" class="form-updateInfo"
-                                value="<?=$account?>" placeholder=""></div>
+                        <div class="inFor_input readonly"><input name="account" readonly type="text"
+                                class="form-updateInfo" value="<?=$account?>" placeholder=""></div>
                     </div>
                     <div class="inFor">
                         <div>
@@ -41,8 +41,9 @@
                         <div>
                             <lable>Mậu Khẩu:</lable>
                         </div>
-                        <div><a href="index.php?act=changePassword"><input class="inFor_input" name="pass" type="password"
-                                    class="form-updateInfo" value="<?=$password?>" readonly placeholder=""></a>
+                        <div><a href="index.php?act=changePassword"><input class="inFor_input" name="pass"
+                                    type="password" class="form-updateInfo" value="<?=$password?>" readonly
+                                    placeholder=""></a>
                         </div>
                     </div>
                     <div class="inFor">

@@ -1,48 +1,41 @@
-
 <body>
-<div class="container-admin">
-    <?php
+    <div class="container-admin">
+        <?php
     require_once 'views/sidebar.php';
     ?>
-    <div class="col-2-admin">
-        <div class="commodities-title">
-            <h4>Quản lí hàng hoá<h4>
-        </div>
-        <div class="commodities-container">
-            <div class="function-commodities">
-                <button class="add-commodities" type="submit"><a href="index.php?act=addProduct">Tạo sản phẩm
-                        mới</a>
-                </button>
-                <button class="select-all-commodities" type="submit"><a href="">Chọn tất cả</a></button>
-                <button class="unchecker-commodities" type="submit"><a href="">Bỏ chọn tất cả</a></button>
-                <button class="delete-all-commodities" type="submit"><a href="">Xoá tất cả</a></button>
+        <div class="col-2-admin">
+            <div class="commodities-title">
+                <h4>Quản lí hàng hoá<h4>
             </div>
-            <div class="line-commodities"></div>
-            <div class="table-commodities">
-                <table class="commodities">
-                    <thead>
-                    <tr>
-                        <th width="10"><input type="checkbox"></th>
-                        <th>Mã sản phẩm</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Ảnh</th>
-                        <th>Giá tiền</th>
-                        <th>Giảm giá</th>
-                        <th>Danh mục</th>
-                        <th>Chức năng</th>
-                    </tr>
-                    </thead>
-                    <tbody class="product-list">
-                    <?php
-                    // var_dump($listsp);
-                    // die;
+            <div class="commodities-container">
+                <div class="function-commodities">
+                    <button class="add-commodities" type="submit"><a href="index.php?act=addProduct">Tạo sản phẩm
+                            mới</a>
+                    </button>
+                </div>
+                <div class="line-commodities"></div>
+                <div class="table-commodities">
+                    <table class="commodities">
+                        <thead>
+                            <tr>
+                                <th>Mã sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Ảnh</th>
+                                <th>Giá tiền</th>
+                                <th>Giảm giá</th>
+                                <th>Danh mục</th>
+                                <th>Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody class="product-list">
+                            <?php
                     foreach ($listsp as $value) {
                         extract($value);
                         $path_edit = 'index.php?act=editProduct&id=' . $id_product;
                         $path_del = 'index.php?act=deleteProduct&id=' . $id_product;
                         echo '
                     <tr>
-                        <td width="10"><input type="checkbox"></td>
+                        
                         <td>' . $id_product . '</td>
                         <td>' . $name_product . '</td>
                          <td><img width="70px" src="../upload/' . $img_product . '" alt=""></td>
@@ -52,22 +45,23 @@
                         <td>
                                             ';?>
 
-                       <button class="delete">
-                                <a href="javascript:confirmDeleTe('<?php echo $path_del?>')"><i class="fas fa-trash-alt"></i></a>
-                       </button>
-                       <button class="edit">
+                            <button class="delete">
+                                <a href="javascript:confirmDeleTe('<?php echo $path_del?>')"><i
+                                        class="fas fa-trash-alt"></i></a>
+                            </button>
+                            <button class="edit">
                                 <a href="<?= $path_edit?>"><i class="fas fa-edit"></i></a>
-                       </button>
+                            </button>
 
-                        </td>
-<?php
+                            </td>
+                            <?php
                     } ?>
 
-                    </tbody>
-                </table>
-                <div id="pagination"></div>
+                        </tbody>
+                    </table>
+                    <div id="pagination"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>

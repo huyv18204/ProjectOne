@@ -25,7 +25,7 @@
                 }else{
                     echo '<s class="price-old">' . $price . '<p>VNĐ</p></s>
                                                       <div class="price-new">' . $discount . '<p>VNĐ</p>
-                                                     ';} ?>
+                          s                           ';} ?>
 
 
 
@@ -37,9 +37,9 @@
     <?php
     } ?>
 
-            </div>
-        </div>
-    </div>
+</div>
+</div>
+</div>
 <div class="product-col-2">
     <div class="nav-bar-product">
         <ul class="nav-bar-product-menu">

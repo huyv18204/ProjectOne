@@ -1,6 +1,6 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 ob_start();
 if(!isset($_SESSION['cart'])){
@@ -10,7 +10,10 @@ include "model/user/cart.php";
 include 'model/PDO.php';
 include 'model/user/login.php';
 include 'model/user/homepage.php';
+include 'model/user/orders.php';
+include 'mail/index.php';
 include 'views/header.php';
+
 
 if (isset($_GET["act"])) {
     $act = $_GET["act"];
@@ -79,7 +82,42 @@ if (isset($_GET["act"])) {
             header("location:index.php?act=home");
             break;
         case 'forgotPassword':
+            if (isset($_POST['abc'])) {
+                $account = $_POST['account'];
+                $email = $_POST['email'];
+                $code = substr(rand(0,999999),0,6);
+                $content = "Mã xác nhận của bạn là: " .$code;
+                $title = "Forgot PassWord";
+                sendMail($email, $title, $content);
+                $_SESSION['email'] =$email;
+                $_SESSION['code'] =$code;
+                $_SESSION['account_forgot'] =$account;
+                header("location:index.php?act=checkCode");
+            }
             include "views/login/forgotPass.php";
+            break;
+        case 'checkCode':
+            if(isset($_POST['check'])){
+                $code = $_POST['code'];
+                if($code == $_SESSION['code']){
+                    header("location:index.php?act=resetPass");
+                    unset($_SESSION['code']);
+                }
+            }
+            include 'views/login/checkCode.php';
+            break;
+        case 'resetPass':
+            if(isset($_POST['btn-submit'])){
+                $pass = $_POST['pass'];
+                $repass = $_POST['newPass'];
+                if($pass = $repass){
+                    reset_pass($repass,$_SESSION['account_forgot'],$_SESSION['email']);
+                    unset($_SESSION['account_forgot']);
+                    unset($_SESSION['email']);
+                    header("location:index.php?act=login");
+                }
+            }
+            include"views/login/resetPass.php";
             break;
         case 'changePassword':
             if(isset($_SESSION['account'])){
@@ -134,6 +172,7 @@ if (isset($_GET["act"])) {
         case 'addToCart':
             if (isset($_POST['btnAddToCart'])){
                 if(isset($_SESSION['account'])) {
+                    $id_user = $_SESSION['account']['id_user'];
                     $id_product = $_POST['id_product'];
                     $name_product = $_POST['name_product'];
                     $img_product = $_POST['img_product'];
@@ -153,7 +192,7 @@ if (isset($_GET["act"])) {
                     $product_exists = false;
                     foreach ($_SESSION['cart'] as &$product_in_cart) {
                         foreach ($product_in_cart as &$value) {
-                            if ($value['id_product'] === $id_product) {
+                            if ($value['id_product'] === $id_product && $value['id_user'] === $id_user) {
                                 // Sản phẩm đã tồn tại trong giỏ hàng, cập nhật số lượng
                                 $value['quantity'] += $quantity;
                                 $product_exists = true;
@@ -164,6 +203,7 @@ if (isset($_GET["act"])) {
                     if (!$product_exists) {
                         $products = array(
                             array(
+                                'id_user' => $id_user,
                                 'id_product' => $id_product,
                                 'name_product' => $name_product,
                                 'img_product' => $img_product,
@@ -177,7 +217,6 @@ if (isset($_GET["act"])) {
                                 'quantity' => $quantity
                             )
                         );
-
                     }
                     array_push($_SESSION['cart'], $products);
                     header("location:index.php?act=cart");
@@ -208,7 +247,10 @@ if (isset($_GET["act"])) {
                     header("location:index.php?act=login");
                 }
             }
-            if(empty($_SESSION['cart'])){
+            if (isset($_POST['selectedProducts'])) {
+                $selectedProducts = $_POST['selectedProducts'];
+            }
+                if(empty($_SESSION['cart'])){
                 unset($_SESSION['cart']);
             }
             include "views/pages/cart.php";
@@ -243,19 +285,25 @@ if (isset($_GET["act"])) {
                 $pay = $_POST['pay'];
                 $idUser = $_SESSION['account']['id_user'];
                 $total = $_POST['total'];
-                $dateOrder = date("h:i:sa Y/m/d");
-                $status = 0;
+                $dateOrder = date("d/m/Y");
+                $status = 1;
                 if(empty($nameOrder) || empty($phoneOrder) || empty($emailOrder) ||empty($addressOrder) || empty($pay) || empty($idUser) || empty($total)){
                 insert_orders($codeOrders,$dateOrder,$pay,$status,$total,$nameOrder,$emailOrder,$phoneOrder,$addressOrder,$takeNode,$idUser);
-                    foreach ($_SESSION['cart'] as $cart){
-                        foreach ($cart as $value){
+                    foreach ($_SESSION['cart'] as $key => $cart){
+                        foreach ($cart as $index => $value){
                         $idProduct = $value['id_product'];
                         $quantity = $value['quantity'];
                         $price = $value['price'] * $quantity;
                         insert_orders_detail($codeOrders,$idProduct,$quantity,$price);
+//                        if($value['id_user'] == $idUser){
+//                            unset($_SESSION['cart'][$key][$index]);
+//                            if (empty($_SESSION['cart'][$key])) {
+//                                unset($_SESSION['cart'][$key]);
+//                            }
+//                        }
                     }
                 }
-            unset($_SESSION['cart']);
+                    unset($_SESSION['cart']);
                     header('location:index.php?act=cart');
             }
             }
@@ -280,11 +328,36 @@ if (isset($_GET["act"])) {
             $list_dm = select_all_danhmuc();
             require_once 'views/pages/category.php';
             break;
+        case 'myOrders':
 
+
+            if($_GET['status']){
+                $id_status = $_GET['status'];
+            }
+            $listOrders = listOrders($id_status,$_SESSION['account']['id_user']);
+
+            if(isset($_POST['btnSuccess'])){
+                $id_order = $_POST['id_order'];
+                StatusSuccess($id_order);
+                header("location:index.php?act=myOrders&status=5");
+            }
+
+            if(isset($_POST['btnCancel'])){
+                $id_order = $_POST['id_order'];
+                StatusCancel($id_order);
+                header("location:index.php?act=myOrders&status");
+            }
+            require_once 'views/pages/myOrders.php';
+            break;
+        case 'myOrdersDetail':
+                $code_order= $_GET['codeOrder'];
+                $lisProduct = OrdersDetail($code_order,);
+            require_once 'views/pages/myOrdersDetail.php';
     }
 } else {
+    $listsp = select_all_product();
+    $listpk = select_all_phukien();
     include 'views/pages/home.php';
 }
 include 'views/footer.php';
 ?>
-

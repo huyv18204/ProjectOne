@@ -1,5 +1,5 @@
 <?php
-//ob_start();
+ob_start();
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -174,7 +174,7 @@ if($_SESSION['account']['role'] == 1) {
                     }
                     $id = $_POST['id'];
                     update_user($name_user, $img_user, $account, $password, $email, $phone, $address, $role, $id);
-                    $_SESSION['account'] = select_account($account, $password);
+//                    $_SESSION['account'] = select_account($account, $password);
                     header('location:index.php?act=listUser');
                 }
                 break;
@@ -228,6 +228,10 @@ if($_SESSION['account']['role'] == 1) {
                 break;
             case "listOrders":
                 $listOrders = selectALlOrders();
+                if(isset($_POST['btn-filter'])){
+                    $options_status = $_POST['options_status'];
+                    $filterStatus = select_status($options_status);
+                }
                 include 'views/orders/listOrders.php';
                 break;
             case "detailOrders":
@@ -241,7 +245,10 @@ if($_SESSION['account']['role'] == 1) {
                 if($_GET['codeOder']){
                     $code_order = $_GET['codeOder'];
                 }
-                $updateStatus = updateStatus($code_order);
+                if($_GET['status']){
+                    $status = $_GET['status'];
+                }
+                $updateStatus = updateStatus($status,$code_order);
                 header("location:index.php?act=listOrders");
                 break;
         }
