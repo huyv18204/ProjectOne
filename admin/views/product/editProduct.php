@@ -26,11 +26,11 @@
                             </tr>
                             <tr>
                                 <td>Giá tiền</td>
-                                <td><input value="<?php echo $listsp['price'] ?>" name="price" type="number"></td>
+                                <td><input value="<?php echo number_format($listsp['price'], 0, '.', '.') ?>" name="price" type="number"></td>
                             </tr>
                             <tr>
                                 <td>Giảm giá</td>
-                                <td><input value="<?php echo $listsp['discount'] ?>" name="discount" type="number"></td>
+                                <td><input value="<?php echo number_format($listsp['discount'], 0, '.', '.') ?>" name="discount" type="number"></td>
                             </tr>
                             <tr>
                                 <td>Danh mục</td>

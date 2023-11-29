@@ -40,7 +40,7 @@
                     <div class="name-price-cart">
                         <h4>Giá:</h4>
                         <p>
-                            <?= $value['price'] ?>
+                            <?= number_format($value['price'], 0, '.', '.') ?> VNĐ
                         </p>
                     </div>
                     <div class="quantity-product-cart">
@@ -128,7 +128,7 @@
             </div>
         </div>
         <h4 class="total-costs">TỔNG TIỀN:
-            <?=$total_money ?> VNĐ
+            <?=number_format($total_money, 0, '.', '.') ?> VNĐ
         </h4>
         <div class="comback">
             <a href="index.php?act=myOrders">Đơn Mua</a>

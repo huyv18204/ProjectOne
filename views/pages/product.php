@@ -14,17 +14,17 @@
                 if($discount != 0){
                     echo '<span class="discount">Giảm '.$persent.'%</span>';
                 }
-    echo '
+                echo '
                                             <div class="img-product">
                                                 <a href="' . $path_deltail . '"><img src="upload/' . $img_product . '" alt=""></a>
                                             </div>
                                             <div class="price-product">'?>
                 <?php
                 if($discount == 0){
-                    echo '<div class="price-new">' . $price . '<p> VNĐ</p>';
+                    echo '<div class="price-new">' . number_format($price, 0, '.', '.') . '<p> VNĐ</p>';
                 }else{
-                    echo '<s class="price-old">' . $price . '<p>VNĐ</p></s>
-                                                      <div class="price-new">' . $discount . '<p>VNĐ</p>
+                    echo '<s class="price-old">' . number_format($price, 0, '.', '.') . '<p> VNĐ</p></s>
+                                                      <div class="price-new">' . number_format($discount, 0, '.', '.') . '<p> VNĐ</p>
                                                      ';} ?>
 
 

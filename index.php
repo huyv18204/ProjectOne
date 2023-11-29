@@ -224,7 +224,7 @@ if (isset($_GET["act"])) {
 
                     }
                 }
-                include "views/pages/updateInformation.php";
+                include "views/login/updateInformation.php";
             }else{
                 header("location:admin/views/error.php");
             }
