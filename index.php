@@ -36,20 +36,29 @@ if (isset($_GET["act"])) {
             include "views/pages/detailProduct.php";
             break;
         case 'register':
+            $checkPassAndAcc = '/^[a-zA-Z0-9]{6,}$/';
+            $checkEmail = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
             if (isset($_POST['btn-register'])) {
                 $account = $_POST['account'];
                 $email = $_POST['email'];
                 $pass = $_POST['pass'];
                 $repass = $_POST['repass'];
                 if (empty($account) || empty($email) || empty($pass) || empty($repass)) {
-                    $notify = "Vui lòng điền thông tin";
+                    $_SESSION['error'] = "Vui lòng điền thông tin.";
                 } else {
-                    if ($pass == $repass) {
-                        insert_account($account, $pass, $email);
-                        $notify = "Đăng kí thành công";
-                        header("location:index.php?act=login");
+                    if (!preg_match($checkEmail, $email)) {
+                        $_SESSION['error'] = "Email không hợp lệ.";
+                    } elseif (!preg_match($checkPassAndAcc, $account)) {
+                        $_SESSION['error'] = "Tên tài khoản phải có ít nhất 6 kí tự.";
+                    } elseif (!preg_match($checkPassAndAcc, $pass)) {
+                        $_SESSION['error'] = "Mật khẩu phải có 6 kí tự.";
                     } else {
-                        $notify = "Mật khẩu không khớp";
+                        if ($pass == $repass) {
+                            insert_account($account, $pass, $email);
+                            header("location:index.php?act=login");
+                        } else {
+                            $_SESSION['error'] = "Mật khẩu không khớp.";
+                        }
                     }
                 }
             }
@@ -66,10 +75,10 @@ if (isset($_GET["act"])) {
                         header("location:index.php?act=home");
                         exit;
                     } else {
-                        $notify = "Tài khoản hoặc mật khẩu không chính xác";
+                        $_SESSION['error'] = "Thông tin đăng nhập không chính xác";
                     }
                 } else {
-                    $notify = "Không được bỏ trống thông tin";
+                    $_SESSION['error'] = "Không được bỏ trống thông tin";
                 }
             }
             include "views/login/login.php";
@@ -82,57 +91,99 @@ if (isset($_GET["act"])) {
             header("location:index.php?act=home");
             break;
         case 'forgotPassword':
-            if (isset($_POST['abc'])) {
+            $checkEmail = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+            if (isset($_POST['btn-submit'])) {
                 $account = $_POST['account'];
                 $email = $_POST['email'];
                 $code = substr(rand(0,999999),0,6);
                 $content = "Mã xác nhận của bạn là: " .$code;
                 $title = "Forgot PassWord";
-                sendMail($email, $title, $content);
-                $_SESSION['email'] =$email;
-                $_SESSION['code'] =$code;
-                $_SESSION['account_forgot'] =$account;
-                header("location:index.php?act=checkCode");
+                if(empty($account) || empty($email)){
+                    $_SESSION['error'] = "Không được bỏ trống thông tin.";
+                }else {
+                    if (!preg_match($checkEmail,$email)){
+                        $_SESSION['error'] = "Email không hợp lệ.";
+                    }else {
+                        sendMail($email, $title, $content);
+                        $_SESSION['email'] = $email;
+                        $_SESSION['code'] = $code;
+                        $_SESSION['account_forgot'] = $account;
+                        header("location:index.php?act=checkCode");
+                    }
+                }
             }
             include "views/login/forgotPass.php";
             break;
         case 'checkCode':
+            $_SESSION['error'] = "Mã xác nhận đã được gửi vào email.";
             if(isset($_POST['check'])){
                 $code = $_POST['code'];
-                if($code == $_SESSION['code']){
-                    header("location:index.php?act=resetPass");
-                    unset($_SESSION['code']);
+                if(empty($code)){
+                    $_SESSION['error'] = "Vui lòng nhập mã xác nhận.";
+                }else {
+                    if ($code == $_SESSION['code']) {
+                        header("location:index.php?act=resetPass");
+                        unset($_SESSION['code']);
+                    }else{
+                        $_SESSION['error'] = "Mã xác nhận không đúng.";
+                    }
                 }
             }
             include 'views/login/checkCode.php';
             break;
         case 'resetPass':
+            $checkPassAndAcc = '/^[a-zA-Z0-9]{6,}$/';
             if(isset($_POST['btn-submit'])){
                 $pass = $_POST['pass'];
                 $repass = $_POST['newPass'];
-                if($pass = $repass){
-                    reset_pass($repass,$_SESSION['account_forgot'],$_SESSION['email']);
-                    unset($_SESSION['account_forgot']);
-                    unset($_SESSION['email']);
-                    header("location:index.php?act=login");
+                if(empty($pass) || empty($repass)){
+                    $_SESSION['error'] = "Vui lòng nhập mật khẩu.";
+                }else {
+                    if (!preg_match($checkPassAndAcc,$pass)){
+                        $_SESSION['error'] = "Mật khẩu mới phải từ 6 kí tự trở lên.";
+                    }else {
+                        if ($pass = $repass) {
+                            reset_pass($repass, $_SESSION['account_forgot'], $_SESSION['email']);
+                            unset($_SESSION['account_forgot']);
+                            unset($_SESSION['email']);
+                            $_SESSION['error'] = "Đổi mật khẩu thành công.";
+                            echo "<script>
+                                    setTimeout(function() {
+                                        window.location.href = 'index.php?act=login';
+                                    }, 2000);
+                                </script>";
+                        }else{
+                            $_SESSION['error'] = "Mật khẩu không khớp.";
+                        }
+                    }
                 }
             }
             include"views/login/resetPass.php";
             break;
         case 'changePassword':
+            $checkPass = '/^[a-zA-Z0-9]{6,}$/';
             if(isset($_SESSION['account'])){
             if (isset($_POST['btn-submit'])) {
 
-                $account = $_POST['account'];
+                $account = $_SESSION['account']['account'];
                 $pass = $_POST['pass'];
                 $newPass = $_POST['newPass'];
-                if ($pass == $_SESSION['account']['password']) {
-                    change_pass($newPass, $_SESSION['account']['id_user']);
-                    $_SESSION['account'] = select_account($account, $newPass);
-                    $notify = "Cập nhật thành công";
-                } else {
-                    $notify = "Sai mật khẩu";
+                if (empty($pass) || empty($newPass)){
+                    $_SESSION['error'] = "Vui lòng điền thông tin.";
+                }else{
+                    if (!preg_match($checkPass,$newPass)){
+                        $_SESSION['error'] = "Mật khẩu phải từ 6 kí tự trở lên.";
+                    }else{
+                        if ($pass == $_SESSION['account']['password']) {
+                            change_pass($newPass, $_SESSION['account']['id_user']);
+                            $_SESSION['account'] = select_account($account, $newPass);
+                            $_SESSION['error'] = "Đổi mật khẩu thành công.";
+                        } else {
+                            $_SESSION['error'] = "Mật khẩu không chính xác.";
+                        }
+                    }
                 }
+
             }
             include "views/login/changePass.php";
             }else{
@@ -140,13 +191,17 @@ if (isset($_GET["act"])) {
             }
             break;
         case 'updateInformation':
+            $checkPhone = '/^(0|\+84)(3[2-9]|5[2689]|7[06789]|8[1-689]|9[0-9])[0-9]{7}$/';
+            $checkEmail = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
             if(isset($_SESSION['account'])) {
                 if (isset($_POST['btn-updateInfo'])) {
                     $id_user = $_POST['id_user'];
                     $target_dir = "upload/";
                     $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                    $img_user = $_FILES["img"]["name"];
                     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-                        $img_user = $_FILES["img"]["name"];
+                    }else{
+                        $_SESSION['error'] = "Không thể upload ảnh";
                     }
                     $account = $_POST['account'];
                     $email = $_POST['email'];
@@ -154,10 +209,20 @@ if (isset($_GET["act"])) {
                     $name = $_POST['name'];
                     $phone = $_POST['phone'];
                     $address = $_POST['address'];
-                    update_user($id_user, $img_user, $pass, $name, $email, $phone, $address);
-                    $_SESSION['account'] = select_account($account, $pass);
-                    $notify = "Cập nhật thành công";
+                    if (empty($email)){
+                        $_SESSION['error'] = "Không được bỏ trống email.";
+                    }else{
+                        if (!preg_match($checkEmail,$email)){
+                            $_SESSION['error'] = "Email không hợp lệ.";
+                        }elseif (!preg_match($checkPhone,$phone)) {
+                            $_SESSION['error'] = "Số điện thoại không hợp lệ.";
+                        }else{
+                            update_user($id_user, $img_user, $pass, $name, $email, $phone, $address);
+                            $_SESSION['account'] = select_account($account, $pass);
+                            $_SESSION['error'] = "Cập nhật thành công.";
+                        }
 
+                    }
                 }
                 include "views/pages/updateInformation.php";
             }else{
@@ -226,8 +291,8 @@ if (isset($_GET["act"])) {
             }
             break;
         case 'cart':
-            $id_product = $_POST['id_product'];
             if (isset($_POST['btnUpdateCart'])) {
+                $id_product = $_POST['id_product'];
                 foreach ($_SESSION['cart'] as &$cart) {
                     foreach ($cart as &$value) {
                         if ($value['id_product'] === $id_product){
@@ -248,7 +313,7 @@ if (isset($_GET["act"])) {
                 }
             }
             if (isset($_POST['selectedProducts'])) {
-                $selectedProducts = $_POST['selectedProducts'];
+                $selectedroducts = $_POST['selectedProducts'];
             }
                 if(empty($_SESSION['cart'])){
                 unset($_SESSION['cart']);
@@ -274,6 +339,8 @@ if (isset($_GET["act"])) {
             break;
 
         case 'order':
+            $checkPhone = '/^(0|\+84)(3[2-9]|5[2689]|7[06789]|8[1-689]|9[0-9])[0-9]{7}$/';
+            $checkEmail = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
             if (isset($_SESSION['account']) && isset($_SESSION['cart'])){
             if(isset($_POST['btn-submit'])){
                 $nameOrder = $_POST['name_order'];
@@ -287,25 +354,28 @@ if (isset($_GET["act"])) {
                 $total = $_POST['total'];
                 $dateOrder = date("d/m/Y");
                 $status = 1;
-                if(empty($nameOrder) || empty($phoneOrder) || empty($emailOrder) ||empty($addressOrder) || empty($pay) || empty($idUser) || empty($total)){
-                insert_orders($codeOrders,$dateOrder,$pay,$status,$total,$nameOrder,$emailOrder,$phoneOrder,$addressOrder,$takeNode,$idUser);
-                    foreach ($_SESSION['cart'] as $key => $cart){
-                        foreach ($cart as $index => $value){
-                        $idProduct = $value['id_product'];
-                        $quantity = $value['quantity'];
-                        $price = $value['price'] * $quantity;
-                        insert_orders_detail($codeOrders,$idProduct,$quantity,$price);
-//                        if($value['id_user'] == $idUser){
-//                            unset($_SESSION['cart'][$key][$index]);
-//                            if (empty($_SESSION['cart'][$key])) {
-//                                unset($_SESSION['cart'][$key]);
-//                            }
-//                        }
+                if(empty($nameOrder) || empty($phoneOrder) || empty($emailOrder) || empty($addressOrder) || empty($total)) {
+                    $_SESSION['error'] = "Không được để trống thông tin.";
+                }elseif(!isset($pay)){
+                    $_SESSION['error'] = "Vui lòng chọn phương thức thanh toán.";
+                }else{
+                    if(!preg_match($checkPhone,$phoneOrder)){
+                        $_SESSION['error'] = "Số điện thoại không hợp lệ.";
+                    }elseif (!preg_match($checkEmail,$emailOrder)){
+                        $_SESSION['error'] = "Email không hợp lệ.";
+                    }else {
+                        insert_orders($codeOrders, $dateOrder, $pay, $status, $total, $nameOrder, $emailOrder, $phoneOrder, $addressOrder, $takeNode, $idUser);
+                        foreach ($_SESSION['cart'] as $key => $cart) {
+                            foreach ($cart as $index => $value) {
+                                $idProduct = $value['id_product'];
+                                $quantity = $value['quantity'];
+                                $price = $value['price'] * $quantity;
+                                insert_orders_detail($codeOrders, $idProduct, $quantity, $price);
+                            }
+                        }
+                        unset($_SESSION['cart']);
                     }
                 }
-                    unset($_SESSION['cart']);
-                    header('location:index.php?act=cart');
-            }
             }
                 include "views/pages/order.php";
             }else{
@@ -329,29 +399,28 @@ if (isset($_GET["act"])) {
             require_once 'views/pages/category.php';
             break;
         case 'myOrders':
-
-
             if($_GET['status']){
                 $id_status = $_GET['status'];
             }
             $listOrders = listOrders($id_status,$_SESSION['account']['id_user']);
 
-            if(isset($_POST['btnSuccess'])){
-                $id_order = $_POST['id_order'];
-                StatusSuccess($id_order);
+            require_once 'views/pages/myOrders.php';
+            break;
+        case 'SuccessOrders':
+            if(isset($_GET['id'])) {
+                StatusSuccess($_GET['id']);
                 header("location:index.php?act=myOrders&status=5");
             }
-
-            if(isset($_POST['btnCancel'])){
-                $id_order = $_POST['id_order'];
-                StatusCancel($id_order);
-                header("location:index.php?act=myOrders&status");
+            break;
+        case 'CanceledOrders':
+            if(isset($_GET['id'])){
+                StatusCancel($_GET['id']);
+                header("location:index.php?act=myOrders&status=6");
             }
-            require_once 'views/pages/myOrders.php';
             break;
         case 'myOrdersDetail':
                 $code_order= $_GET['codeOrder'];
-                $lisProduct = OrdersDetail($code_order,);
+                $lisProduct = OrdersDetail($code_order);
             require_once 'views/pages/myOrdersDetail.php';
     }
 } else {

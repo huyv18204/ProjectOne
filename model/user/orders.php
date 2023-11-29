@@ -9,7 +9,7 @@ WHERE orders_detail.code_order = '$code_order'";
     return $list;
 }
 function listOrders($id_status,$id_user){
-    if ($id_status != "" ){
+    if ($id_status != 'All' ){
         if($id_status == 3){
             $sql ="select * from orders where status = 3 or status = 4 and id_user= '$id_user'  order by id_order desc ";
         }else {

@@ -20,13 +20,13 @@
                     <input name="account" type="text" class="auth-form-input" placeholder="Tên tài khoản">
                     <div class="input-icon">
                         <input name="password" type="password" class="auth-form-input" placeholder="Mật khẩu">
-                        <i class="fa fa-eye show-password"></i>
                     </div>
-<!--                    <label class="btn active">-->
-<!--                        <input type="checkbox" name='email1' checked>-->
-<!--                        <i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>-->
-<!--                        <span> Lưu mật khẩu.</span>-->
-<!--                    </label>-->
+                    <div class="validation">
+                        <?php if (isset($_SESSION['error'])){
+                            echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
+                            unset($_SESSION['error']);
+                        } ?>
+                    </div>
                     <div class="footer-action">
                         <input name="btn-login" type="submit" value="Đăng nhập" class="auth-submit">
                         <a href="index.php?act=register" class="auth-btn-direct">Đăng kí</a>

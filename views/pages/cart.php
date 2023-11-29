@@ -17,7 +17,7 @@
 
                  <input name="id_product" value="<?= $value['id_product'] ?>" type="hidden">
                  <input name="selectedProducts[]" class="checkbox-cart" type="checkbox">
-                 <img src="upload/<?= $value['img_product'] ?>" alt="">
+                 <a href="index.php?act=deltailProduct&id=<?=$value['id_product']?>"><img src="upload/<?= $value['img_product'] ?>" alt=""></a>
                  <div class="inFor_product">
                      <div class="name-product-cart">
                          <h4>Tên sản phẩm:</h4>
@@ -65,3 +65,4 @@
  <?php else : ?>
  <div class="cart-empty"><span>Giỏ hàng trống.</span></div>
  <?php endif; ?>
+

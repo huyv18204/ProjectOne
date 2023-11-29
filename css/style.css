@@ -495,7 +495,7 @@ a.auth-btn-direct:hover {
 .footer-action {
     display: flex;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 20px;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -649,7 +649,7 @@ input.form-updateInfo::placeholder {
 .footer-updateInfo {
     display: grid;
     grid-template-columns: 80% 20%;
-    margin-top: 2rem;
+    margin-top: 10px;
     box-sizing: border-box;
     margin-right: 30px;
 }
@@ -1248,7 +1248,6 @@ h2.auth-title {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #f0f0f0;
     min-height: 215px;
@@ -1305,7 +1304,10 @@ h2.auth-title {
     width: 100%;
     margin-top: 30px;
 }
-
+.myOrders a{
+    text-decoration: none;
+    color: black;
+}
 .inFo-purchase img {
     width: 50px;
     margin-left: 60px;
@@ -1420,6 +1422,10 @@ h2.auth-title {
     /*margin-right: 10px;*/
     border-radius: 5px;
 }
+.checkOrder a{
+    text-decoration: none;
+    color: white;
+}
 
 .reBuy {
     width: 150px;
@@ -1481,4 +1487,11 @@ h2.auth-title {
 .detail_order a{
     text-decoration: none;
     color: white;
+}
+
+.validation{
+    height: 18px;
+}
+.validation-error{
+    color: red;
 }

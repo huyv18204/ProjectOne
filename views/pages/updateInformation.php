@@ -53,6 +53,12 @@
                         <div><input class="inFor_input" name="address" type="text" class="form-updateInfo"
                                 value="<?=$address?>" placeholder=""></div>
                     </div>
+                    <div style="margin-left: 30px; margin-top: 20px" class="validation">
+                        <?php if (isset($_SESSION['error'])){
+                            echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
+                            unset($_SESSION['error']);
+                        } ?>
+                    </div>
                     <div class="footer-updateInfo">
                         <div></div>
                         <input type="hidden" name="id_user" value="<?= $id_user?>">
@@ -69,7 +75,6 @@
                 <img src="upload/<?= $img_user ?>" alt="">
                 <?php }
                     ?>
-
                 <input name="img" type="file">
             </div>
             </form>
