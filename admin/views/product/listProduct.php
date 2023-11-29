@@ -39,8 +39,8 @@
                         <td>' . $id_product . '</td>
                         <td>' . $name_product . '</td>
                          <td><img width="70px" src="../upload/' . $img_product . '" alt=""></td>
-                        <td>' . $price . ' đ</td>
-                        <td>'.$discount.'</td>
+                        <td>' . number_format($price, 0, '.', '.') . ' VNĐ</td>
+                        <td>' . number_format($discount, 0, '.', '.') . ' VNĐ</td>
                         <td>' . $name_category . '</td>
                         <td>
                                             ';?>

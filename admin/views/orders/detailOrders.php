@@ -42,8 +42,8 @@
                         <td>' . $code_order . '</td>
                         <td>' . $name_product . '</td>
                          <td>'.$quantity.'</td>
-                        <td>' . $price . '</td>
-                        <td>'.$total.'</td>
+                        <td>' . number_format($price, 0, '.', '.') . '</td>
+                        <td>' . number_format($total, 0, '.', '.') . '</td>
                                             ';?>
 
                             <?php
@@ -54,7 +54,7 @@
                     <div>
                         <div style="margin-top: 15px;padding-bottom: 15px"><span
                                 style="font-size: 18px;font-weight: bold">Tổng tiền:<span style="color: red">
-                                    <?=$total_money?> VNĐ</span></span></div>
+                                    <?=number_format($total_money, 0, '.', '.') ?> VNĐ</span></span></div>
                     </div>
 
                 </div>

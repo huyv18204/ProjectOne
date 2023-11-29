@@ -47,8 +47,8 @@
                             <p>Số lượng: <?=$product['quantity'] ?></p>
                         </div>
                         <div class="total-purchase">
-                            <span class="priceProduct-purchare"><?=$priceProduct?> VNĐ</span>
-                            <span class="discount-purchare"><?=$discount ?> VNĐ</span>
+                            <span class="priceProduct-purchare"><?=number_format($priceProduct, 0, '.', '.')?> VNĐ</span>
+                            <span class="discount-purchare"><?=number_format($discount, 0, '.', '.') ?> VNĐ</span>
                         </div>
                     </div>
                     <?php } ?>
@@ -59,7 +59,7 @@
                 <div class="footer-purchase">
                     <div>
                         <span class="start-purchase"><span style="font-size: 20px;font-weight: bold">Thành
-                                tiền:</span><span class="total-conclusion"><?= $total_money ?> VNĐ</span></span>
+                                tiền:</span><span class="total-conclusion"><?= number_format($total_money, 0, '.', '.') ?> VNĐ</span></span>
                     </div>
                     <div class="end-purchase">
                         <p class="date-purchase">Ngày đặt: <?=$date_order ?></p>

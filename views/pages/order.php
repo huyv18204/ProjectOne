@@ -22,7 +22,7 @@
                     </div>
                     <div class="name-price-cart">
                         <h4>Giá:</h4>
-                        <p><?= $value['price'] ?></p>
+                        <p><?= number_format($value['price'], 0, '.', '.') ?> VNĐ</p>
                     </div>
                     <div class="quantity-product-cart">
                         <h4>Số lượng:</h4>
@@ -51,7 +51,7 @@
             <div><input value="0" name="pay" type="radio"> Thanh toán khi nhận hàng</div>
             <div> <input value="1" name="pay" type="radio"> Thanh toán bằng thẻ tín dụng</div>
         </div>
-        <h4 class="total-pay">TỔNG TIỀN: <?= $total ?> VNĐ </h4>
+        <h4 class="total-pay">TỔNG TIỀN: <?= number_format($total, 0, '.', '.') ?> VNĐ </h4>
         <input name="total" value="<?= $total ?>" type="hidden">
         <div style="margin-top: 10px" class="validation">
             <?php if (isset($_SESSION['error'])){

@@ -25,7 +25,7 @@
                      </div>
                      <div class="name-price-cart">
                          <h4>Giá:</h4>
-                         <p><?= $value['price'] ?></p>
+                         <p><?= number_format($value['price'], 0, '.', '.') ?> VNĐ</p>
                      </div>
                      <div class="quantity-product-cart">
                          <h4>Số lượng:</h4>
@@ -52,7 +52,7 @@
      </div>
      <div class="total">
          <h4>Tổng tiền:</h4>
-         <div><?=$total ?> VNĐ</div>
+         <div><?= number_format($total, 0, '.', '.') ?> VNĐ</div>
      </div>
      <form action="" method="post">
          <button name="btn-orders" type="submit">

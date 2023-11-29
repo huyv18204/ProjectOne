@@ -4,28 +4,41 @@
             <div class="product-list">
                 <?php foreach ($list_sp as $value) {
                     extract($value);
-//                    $path_deltail = 'index.php?act=deltail&id=' . $id_sanpham;
-                    echo '
-                         <div class="product">
-                        <span class="discount">Giảm 16%</span>
-                        <div class="img-product">
-                            <a href=""><img src="upload/' . $img_product . '" alt=""></a>
-                        </div>
-                        <div class="price-product">
-                            <s class="price-old">29,000,000<p>VNĐ</p></s>
+                $money = (($price - $discount) / $price) * 100;
+                $persent = round($money, 0);
+                $path_deltail = 'index.php?act=deltailProduct&id=' . $id_product;
+                echo '
+                                             <div class="product">';
 
-                            <div class="price-new">' . $price . '<p>VNĐ</p>
-                            </div>
-                        </div>
-                        <h4><a href="">' . $name_product . '</a></h4>
-                    </div>
-';
-                } ?>
+                if($discount != 0){
+                    echo '<span class="discount">Giảm '.$persent.'%</span>';
+                }
+                echo '
+                                            <div class="img-product">
+                                                <a href="' . $path_deltail . '"><img src="upload/' . $img_product . '" alt=""></a>
+                                            </div>
+                                            <div class="price-product">'?>
+                <?php
+                if($discount == 0){
+                    echo '<div class="price-new">' . number_format($price, 0, '.', '.') . '<p> VNĐ</p>';
+                }else{
+                    echo '<s class="price-old">' . number_format($price, 0, '.', '.') . '<p> VNĐ</p></s>
+                                                      <div class="price-new">' . number_format($discount, 0, '.', '.') . '<p> VNĐ</p>
+                                                     ';} ?>
+
 
 
             </div>
         </div>
+        <h4><a href="<?= $path_deltail ?>"><?= $name_product?></a></h4>
     </div>
+
+    <?php
+    } ?>
+
+</div>
+</div>
+</div>
     <div class="product-col-2">
         <div class="nav-bar-product">
             <ul class="nav-bar-product-menu">
