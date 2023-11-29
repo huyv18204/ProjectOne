@@ -53,12 +53,18 @@
         </div>
         <h4 class="total-pay">TỔNG TIỀN: <?= $total ?> VNĐ </h4>
         <input name="total" value="<?= $total ?>" type="hidden">
+        <div style="margin-top: 10px" class="validation">
+            <?php if (isset($_SESSION['error'])){
+                echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
+                unset($_SESSION['error']);
+            } ?>
+        </div>
         <div class="adjust-pay">
             <?php
                 if (empty($_SESSION['cart'])){?>
             <input name="btn-submit" type="submit" value="Đặt Hàng" class="btn-pay">
             <?php }else{ ?>
-            <input onclick="notify()" name="btn-submit" type="submit" value="Đặt Hàng" class="btn-pay">
+            <input name="btn-submit" type="submit" value="Đặt Hàng" class="btn-pay">
             <?php } ?>
         </div>
     </form>

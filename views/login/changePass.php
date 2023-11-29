@@ -6,11 +6,15 @@
                     Đổi mật khẩu
                 </h2>
                 <form class="login-form" method="post" action="index.php?act=changePassword">
-                    <input name="account" type="text" class="auth-form-input" placeholder="Tên tài khoản">
-                        <input name="pass" type="password" class="auth-form-input" placeholder="Nhập mật khẩu">
+                    <input name="pass" type="password" class="auth-form-input" placeholder="Nhập mật khẩu">
                     <input name="newPass" type="password" class="auth-form-input" placeholder="Nhập mật khẩu mới ">
+                    <div class="validation">
+                        <?php if (isset($_SESSION['error'])){
+                            echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
+                            unset($_SESSION['error']);
+                        } ?>
+                    </div>
                     <div class="footer-action">
-                        <input type="hidden" name = "id_user" value="">
                         <input name="btn-submit" type="submit" value="Đổi mật khẩu" class="auth-submit">
                     </div>
                 </form>
