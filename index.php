@@ -290,7 +290,6 @@ if (isset($_GET["act"])) {
 
                     // Lấy sản phẩm trong bảng sản phẩm theo id
                     $dataDb = loadProductCart($idList);
-                     var_dump($_SESSION['cart']);
                 }
             }
             include "views/pages/cart.php";

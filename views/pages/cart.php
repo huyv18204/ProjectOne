@@ -23,7 +23,7 @@
              <div class="block-cart">
 
                  <input name="id_product" value="<?= $value['id_product'] ?>" type="hidden">
-                 <input name="selectedProducts[]" class="checkbox-cart" type="checkbox">
+<!--                 <input name="selectedProducts[]" class="checkbox-cart" type="checkbox">-->
                  <a href="index.php?act=deltailProduct&id=<?=$value['id_product']?>"><img src="upload/<?= $value['img_product'] ?>" alt=""></a>
                  <div class="inFor_product">
                      <div class="name-product-cart">

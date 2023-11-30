@@ -48,9 +48,6 @@
                                                       <div class="price-new">' . number_format($discount, 0, '.', '.') . '<p>VNĐ</p>
                                                      ';
                             } ?>
-
-
-
                     </div>
                 </div>
                 <h4><a href="<?= $path_deltail ?>">
@@ -97,9 +94,6 @@
                                                       <div class="price-new">' . number_format($discount, 0, '.', '.') . '<p>VNĐ</p>
                                                      ';
                             } ?>
-
-
-
                     </div>
                 </div>
                 <h4><a href="<?= $path_deltail ?>">
@@ -144,9 +138,6 @@
                             echo '<s class="price-old">' . number_format($price, 0, '.', '.') . '<p>VNĐ</p></s>
                             <div class="price-new">' . number_format($discount, 0, '.', '.') . '<p>VNĐ</p>
                             ';} ?>
-
-
-
                     </div>
                 </div>
                 <h4><a href="<?= $path_deltail ?>">
