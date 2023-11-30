@@ -1,9 +1,14 @@
 <section class="main-body">
     <div class="banner">
-
         <div class="slide active">
             <a href=""><img src="image/Banner.png" alt=""></a>
         </div>
+<!--        <div class="slide active">-->
+<!--            <a href=""><img style="margin: auto;width: 1200px;margin-top: 40px" src="image/banner.jpeg" alt=""></a>-->
+<!--        </div>-->
+<!--        <div class="slide active">-->
+<!--            <img style="margin: auto;width: 1200px;margin-top: 40px" src="image/banner-2.jpeg" alt="">-->
+<!--        </div>-->
     </div>
     <main>
         <section class="main">

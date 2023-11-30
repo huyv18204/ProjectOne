@@ -34,23 +34,23 @@ window.addEventListener("click", function () {
 //
 // }
 
-function increaseValue(button) {
-    var displayElement = button.parentElement.querySelector('#display');
-    var quantity = parseInt(displayElement.value);
-
-    quantity += 1;
-    displayElement.value = quantity;
-}
-
-function reduceValue(button) {
-    var displayElement = button.parentElement.querySelector('#display');
-    var quantity = parseInt(displayElement.value);
-
-    if (quantity > 1) {
-        quantity -= 1;
-        displayElement.value = quantity;
-    }
-}
+// function increaseValue(button) {
+//     var displayElement = button.parentElement.querySelector('#display');
+//     var quantity = parseInt(displayElement.value);
+//
+//     quantity += 1;
+//     displayElement.value = quantity;
+// }
+//
+// function reduceValue(button) {
+//     var displayElement = button.parentElement.querySelector('#display');
+//     var quantity = parseInt(displayElement.value);
+//
+//     if (quantity > 1) {
+//         quantity -= 1;
+//         displayElement.value = quantity;
+//     }
+// }
 
 
 $(document).ready(function () {

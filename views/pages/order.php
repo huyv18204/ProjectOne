@@ -5,33 +5,32 @@
         $quantity = 0 ;
         $total = 0;
         foreach ($_SESSION['cart'] as $cart) {
-            foreach ($cart as $value) {
-                if ($_SESSION['account']['id_user'] == $value['id_user']){
-        $quantity += $value['quantity'];
-        $total += $value['quantity'] * $value['price'];
+                if ($_SESSION['account']['id_user'] == $cart['id_user']){
+        $quantity += $cart['quantity'];
+        $total += $cart['quantity'] * $cart['price'];
         ?>
         <form action="" method="post">
             <div class="block-cart">
 
-                <input name="id_product" value="<?= $value['id_product'] ?>" type="hidden">
-                <img src="upload/<?= $value['img_product'] ?>" alt="">
+                <input name="id_product" value="<?= $cart['id_product'] ?>" type="hidden">
+                <img src="upload/<?= $cart['img_product'] ?>" alt="">
                 <div class="inFor_product">
                     <div class="name-product-cart">
                         <h4>Tên sản phẩm:</h4>
-                        <p><?= $value['name_product'] ?></p>
+                        <p><?= $cart['name_product'] ?></p>
                     </div>
                     <div class="name-price-cart">
                         <h4>Giá:</h4>
-                        <p><?= number_format($value['price'], 0, '.', '.') ?> VNĐ</p>
+                        <p><?= number_format($cart['price'], 0, '.', '.') ?> VNĐ</p>
                     </div>
                     <div class="quantity-product-cart">
                         <h4>Số lượng:</h4>
-                        <p><?= $value['quantity'] ?></p>
+                        <p><?= $cart['quantity'] ?></p>
                     </div>
                 </div>
         </form>
     </div>
-    <?php }}}} ?>
+    <?php }}} ?>
 
 </div>
 <div class="cart-columns-2">

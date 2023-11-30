@@ -108,6 +108,8 @@
                     <div class="cart">
                         <a href="index.php?act=cart"><i class="fa-solid fa-cart-shopping fa-xl"
                                 style="color: #ffffff;"></i></a>
+<!--                        <span id="totalProduct">--><?//= !empty($_SESSION['cart']) ? count($_SESSION['cart']) : 0 ?><!--</span>-->
+
                     </div>
                 </div>
             </nav>

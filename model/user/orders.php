@@ -43,4 +43,9 @@ WHERE orders_detail.code_order = '$code_order'";
     $list = pdo_query($sql);
     return $list;
 }
+
+function update_total($id_product,$quantity){
+    $sql = "update product set total_quantity = (total_quantity - '$quantity') where id_product = '$id_product'";
+    pdo_execute($sql);
+}
 ?>

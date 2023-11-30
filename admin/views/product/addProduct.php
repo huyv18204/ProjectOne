@@ -40,6 +40,10 @@
                                     </select></td>
                             </tr>
                             <tr>
+                                <td>Số lượng</td>
+                                <td><input name="total_quantity" type="number"></td>
+                            </tr>
+                            <tr>
                                 <td>Chip</td>
                                 <td><input name="chip" type="text"></td>
                             </tr>

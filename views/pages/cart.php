@@ -1,16 +1,23 @@
- <?php if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) : ?>
- <div class="cart-container">
+<?php if (!empty($_SESSION['cart'])) : ?>
+ <div id="order">
+ <div  class="cart-container">
      <div></div>
      <div class="cart-columns-1">
          <?php
-            $quantity = 0 ;
-            $total = 0;
-            foreach ($_SESSION['cart'] as $cart) {
-                foreach ($cart as $value) {
-                    if ($_SESSION['account']['id_user'] == $value['id_user']){
-                        $quantity += $value['quantity'];
-                        $total += $value['quantity'] * $value['price'];
 
+            $total = 0;
+            $number = 0;
+            foreach ($dataDb as $key => $value) {
+                $quantity = 0 ;
+                foreach ($_SESSION['cart'] as $cart) {
+                    if ($cart['id_product'] == $value['id_product']) {
+                        $quantity = $cart['quantity'];
+                        $number += $quantity;
+                        break;
+                    }
+                }
+                    if ($_SESSION['account']['id_user'] == $cart['id_user']){
+                        $total += $quantity * $value['price'];
                 ?>
          <form action="" method="post">
              <div class="block-cart">
@@ -30,25 +37,21 @@
                      <div class="quantity-product-cart">
                          <h4>Số lượng:</h4>
                          <div class="adjust">
-                             <button name="btnUpdateCart" onclick="reduceValue(this)">-</button>
-                             <input readonly type="text" name="quantity" id="display" value="<?= $value['quantity'] ?>">
-                             <button name="btnUpdateCart" onclick="increaseValue(this)">+</button>
+                             <input min="1" id="quantity_<?= $value['id_product'] ?>" type="number" name="quantity" oninput="updateQuantity(<?= $value['id_product'] ?>, <?= $key ?>)" value="<?= $quantity ?>">
                          </div>
                      </div>
                  </div>
-                 <a class="bin" href="index.php?act=deleteProductInCart&id=<?=$value['id_product'] ?>">
-                     <i class="fa-solid fa-trash fa-xl" style="color: #000000;"></i>
-                 </a>
+                 <a class="bin" onclick="removeFormCart(<?= $value['id_product'] ?>)"><i class="fa-solid fa-xmark" style="color: #000000;"></i></a>
          </form>
      </div>
-     <?php }}} ?>
+     <?php }} ?>
  </div>
  <div class="cart-columns-2">
      <h3>THÔNG TIN TỔNG</h3>
      <p>---------------------------------------------------------------------------------</p>
      <div class="soluong">
          <h4>Số lượng hàng:</h4>
-         <div><?= $quantity ?></div>
+         <div><?= $number ?></div>
      </div>
      <div class="total">
          <h4>Tổng tiền:</h4>
@@ -62,7 +65,60 @@
  </div>
  <div></div>
  </div>
+     </div>
  <?php else : ?>
  <div class="cart-empty"><span>Giỏ hàng trống.</span></div>
  <?php endif; ?>
 
+ <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+ <script>
+     // hàm cập nhật số lượng
+     function updateQuantity(id_product, index) {
+         // lấy giá trị của ô input
+         let newQuantity = $('#quantity_' + id_product).val();
+         if (newQuantity <= 0) {
+             newQuantity = 1
+         }
+
+         // Gửi yêu cầu bằng ajax để cập nhật giỏ hàng
+         $.ajax({
+             type: 'POST',
+             url: 'index.php?act=updateQuantity',
+             data: {
+                 id_product: id_product,
+                 quantity: newQuantity
+             },
+             success: function(response) {
+                 // Sau khi cập nhật thành công
+                 $.post('views/pages/tableOrders.php', function(data) {
+                     $('#order').html(data);
+                 })
+             },
+             error: function(error) {
+                 console.log(error);
+             },
+         })
+     }
+
+     function removeFormCart(id_product) {
+         if (confirm("Bạn có đồng ý xóa sản phẩm hay không?")) {
+             // Gửi yêu cầu bằng ajax để cập nhật giỏ hàng
+             $.ajax({
+                 type: 'POST',
+                 url: 'index.php?act=deleteProductInCart',
+                 data: {
+                     id_product: id_product
+                 },
+                 success: function(response) {
+                     // Sau khi cập nhật thành công
+                     $.post('views/pages/tableOrders.php', function(data) {
+                         $('#order').html(data);
+                     })
+                 },
+                 error: function(error) {
+                     console.log(error);
+                 },
+             })
+         }
+     }
+ </script>
