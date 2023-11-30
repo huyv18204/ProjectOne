@@ -1080,7 +1080,7 @@ h2.auth-title {
     margin-bottom: 50px;
 }
 
-.adjust,
+/*.adjust,*/
 .name-product-cart,
 .name-price-cart,
 .quantity-product-cart {
@@ -1088,7 +1088,9 @@ h2.auth-title {
     justify-content: flex-start;
     padding: 10px 50px 10px 50px;
 }
-
+.adjust {
+    margin-left: 20px;
+}
 .name-product-cart {
     width: 500px;
 }
@@ -1113,14 +1115,18 @@ h2.auth-title {
 /*}*/
 
 .adjust>input {
-    width: 10px;
+    width: 40px;
     border: none;
-    margin: 0 10px 0 10px;
+    /*margin: 0 10px 0 10px;*/
+    font-size: 17px;
+    /*margin-bottom: 10px;*/
+    /*padding-bottom: 10px;*/
+    margin-top: 3px;
 }
 
-.adjust>button {
-    width: 30px;
-}
+/*.adjust>button {*/
+/*    width: 30px;*/
+/*}*/
 
 .cart-columns-2 h3 {
     font-size: 23px;
@@ -1193,7 +1199,9 @@ h2.auth-title {
     border: none;
     background-color: #ffffff;
 }
-
+.fa-solid fa-xmark:hover{
+    color: red;
+}
 .inFor_product {
     width: 400px;
 }

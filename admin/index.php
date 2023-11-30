@@ -87,6 +87,7 @@ if($_SESSION['account']['role'] == 1) {
                         $screen = $_POST['screen'];
                         $camera = $_POST['camera'];
                         $camera_selfie = $_POST['camera_selfie'];
+                        $total = $_POST['total_quantity'];
                         $origin = $_POST['origin'];
                         $id = $_POST['id'];
                         $target_dir = "../upload/";
@@ -94,7 +95,7 @@ if($_SESSION['account']['role'] == 1) {
                         if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
                             $image = $_FILES["img"]["name"];
                         }
-                        update_sanpham($name_product, $price, $discount, $image, $id_category, $chip, $ram, $screen, $camera, $camera_selfie, $origin, $id);
+                        update_sanpham($name_product, $price, $discount, $image, $id_category, $chip, $ram, $screen, $camera, $camera_selfie, $origin,$total, $id);
                         header('location:index.php?act=listProduct');
                     }
                 }
@@ -122,6 +123,7 @@ if($_SESSION['account']['role'] == 1) {
                     $camera = $_POST['camera'];
                     $camera_selfie = $_POST['camera_selfie'];
                     $origin = $_POST['origin'];
+                    $total = $_POST['total_quantity'];
                     $img = $_FILES['img']['name'];
                     $target_dir = "../upload/";
                     $target_file = $target_dir . basename($_FILES["img"]["name"]);
@@ -133,8 +135,7 @@ if($_SESSION['account']['role'] == 1) {
                     if (empty($name_product) || empty($price) || empty($id_category)) {
                         $notify = "Không được để trống thông tin";
                     } else {
-                        insert_sanpham($name_product, $price, $discount, $img, $id_category, $chip, $ram, $screen, $camera, $camera_selfie, $origin);
-                        $notify = "Không được để trống thông tin";
+                        insert_sanpham($name_product, $price, $discount, $img, $id_category, $chip, $ram, $screen, $camera, $camera_selfie, $origin,$total);
                         header('location:index.php?act=listProduct');
                     }
                 }

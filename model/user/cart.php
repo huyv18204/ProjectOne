@@ -10,6 +10,11 @@ function insert_orders_detail($codeOrders,$idProduct,$quantity,$price)
 {
     $sql = "insert into orders_detail(code_order,id_product,quantity,price) values ('$codeOrders','$idProduct','$quantity','$price')";
     pdo_execute($sql);
+}
 
+function loadProductCart($idList){
+    $sql = "SELECT * FROM product WHERE id_product IN ($idList)";
+    $list = pdo_query($sql);
+    return $list;
 }
 ?>

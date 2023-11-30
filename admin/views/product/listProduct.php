@@ -24,6 +24,7 @@
                                 <th>Giá tiền</th>
                                 <th>Giảm giá</th>
                                 <th>Danh mục</th>
+                                <th>Số lượng</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -42,6 +43,7 @@
                         <td>' . number_format($price, 0, '.', '.') . ' VNĐ</td>
                         <td>' . number_format($discount, 0, '.', '.') . ' VNĐ</td>
                         <td>' . $name_category . '</td>
+                        <td>' . $total_quantity . '</td>
                         <td>
                                             ';?>
 
