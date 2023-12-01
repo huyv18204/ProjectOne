@@ -48,7 +48,7 @@
         <div class="pay">
             <h3>PHƯƠNG THỨC THANH TOÁN</h3>
             <div><input value="0" name="pay" type="radio"> Thanh toán khi nhận hàng</div>
-            <div> <input value="1" name="pay" type="radio"> Thanh toán bằng thẻ tín dụng</div>
+            <div> <input value="1" name="pay" type="radio"> Thanh toán MOMO</div>
         </div>
         <h4 class="total-pay">TỔNG TIỀN: <?= number_format($total, 0, '.', '.') ?> VNĐ </h4>
         <input name="total" value="<?= $total ?>" type="hidden">
@@ -59,20 +59,10 @@
             } ?>
         </div>
         <div class="adjust-pay">
-            <?php
-                if (empty($_SESSION['cart'])){?>
             <input name="btn-submit" type="submit" value="Đặt Hàng" class="btn-pay">
-            <?php }else{ ?>
-            <input name="btn-submit" type="submit" value="Đặt Hàng" class="btn-pay">
-            <?php } ?>
         </div>
     </form>
 
 </div>
 <div></div>
 </div>
-<script>
-function notify() {
-    alert("Đặt hàng thành công")
-}
-</script>

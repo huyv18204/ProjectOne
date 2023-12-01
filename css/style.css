@@ -1284,7 +1284,8 @@ h2.auth-title {
     justify-content: center;
     align-items: center;
     list-style: none;
-    width: 160px;
+    width: 190px;
+
 
 }
 
@@ -1502,4 +1503,43 @@ h2.auth-title {
 }
 .validation-error{
     color: red;
+}
+
+.container-success {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.container-success>h2 {
+    color: #444444;
+}
+
+.container-success>p {
+    color: #333;
+    margin-top: 10px;
+}
+
+.container-success>button {
+    padding: 10px 20px;
+    background-color: #7AC142;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+
+}
+
+#container-success {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
 }

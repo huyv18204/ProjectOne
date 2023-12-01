@@ -5,23 +5,14 @@
     ?>
         <div class="col-2-admin">
             <div class="commodities-title">
-                <h4>Quản lí đơn hàng<h4>
+                <h4>Chi tiết đơn hàng<h4>
             </div>
             <div class="commodities-container">
-                <div class="function-commodities">
-                    <button class="add-commodities" type="submit"><a href="index.php?act=addProduct">Tạo sản phẩm
-                            mới</a>
-                    </button>
-                    <button class="select-all-commodities" type="submit"><a href="">Chọn tất cả</a></button>
-                    <button class="unchecker-commodities" type="submit"><a href="">Bỏ chọn tất cả</a></button>
-                    <button class="delete-all-commodities" type="submit"><a href="">Xoá tất cả</a></button>
-                </div>
                 <div class="line-commodities"></div>
                 <div class="table-commodities">
                     <table class="commodities">
                         <thead>
                             <tr>
-                                <th width="10"><input type="checkbox"></th>
                                 <th>Mã đơn hàng</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Số lượng</th>
@@ -38,7 +29,6 @@
                         $total_money += $total;
                         echo '
                     <tr>
-                        <td width="10"><input type="checkbox"></td>
                         <td>' . $code_order . '</td>
                         <td>' . $name_product . '</td>
                          <td>'.$quantity.'</td>

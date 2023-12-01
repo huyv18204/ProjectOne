@@ -1,9 +1,9 @@
+<?php if(isset($_SESSION['account'])){ ?>
 <body>
     <div class="container_purchase">
         <div class="menu_purchase">
             <ul id="menu_purchase">
                 <li><a <?php if($_GET['status'] == 'All'){echo 'style="color: #7AC142"';} ?> href="index.php?act=myOrders&status=All">Tất cả</a></li>
-                <li><a <?php if($_GET['status'] == 10){echo 'style="color: #7AC142"';} ?> href="index.php?act=myOrders&status=10">Đã thanh toán</a></li>
                 <li><a <?php if($_GET['status'] == 1){echo 'style="color: #7AC142"';} ?> href="index.php?act=myOrders&status=1">Chờ xác nhận</a></li>
                 <li><a <?php if($_GET['status'] == 2){echo 'style="color: #7AC142"';} ?> href="index.php?act=myOrders&status=2">Đang xử lí</a></li>
                 <li><a <?php if($_GET['status'] == 3){echo 'style="color: #7AC142"';} ?> href="index.php?act=myOrders&status=3">Đang vận chuyển</a></li>
@@ -91,7 +91,9 @@
         <?php } ?>
     </div>
 </body>
-
+<?php }else{
+    header("location:admin/views/error.php");
+} ?>
 <script>
     function confirmCancel(delUrl) {
         if (confirm("Bạn có muốn huỷ đơn hàng không?")) {

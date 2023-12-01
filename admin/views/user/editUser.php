@@ -26,11 +26,11 @@
                             </tr>
                             <tr>
                                 <td>Tên tài khoản</td>
-                                <td><input name="account" value="<?= $account ?>" type="text"></td>
+                                <td><input readonly name="account" value="<?= $account ?>" type="text"></td>
                             </tr>
                             <tr>
                                 <td>Mật khẩu</td>
-                                <td><input name="pass" value="<?= $password ?>" type="text"></td>
+                                <td><input readonly name="pass" value="<?= $password ?>" type="password"></td>
                             </tr>
                             <tr>
                                 <td>Địa chỉ</td>
@@ -38,11 +38,11 @@
                             </tr>
                             <tr>
                                 <td>Số điện thoại</td>
-                                <td><input name="phone" value="<?= $phone ?>" type="text"></td>
+                                <td><input name="phone" value="<?= $phone ?>" type="number"></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td><input name="email" value="<?= $email ?>" type="text"></td>
+                                <td><input name="email" value="<?= $email ?>" type="email"></td>
                             </tr>
                             <tr>
                                 <td>Vai trò</td>
@@ -67,6 +67,12 @@
                             <tr>
                         </tbody>
                     </table>
+                    <div class="validation">
+                        <?php if (isset($_SESSION['error'])){
+                            echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
+                            unset($_SESSION['error']);
+                        } ?>
+                    </div>
                     <div class="add">
                         <input type="hidden" name="id" value="<?php echo $id_user ?>">
                         <button class="btn-list" type="submit"><a href="index.php?act=listUser">Danh sách khách hàng</a>

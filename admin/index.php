@@ -28,12 +28,12 @@ if($_SESSION['account']['role'] == 1) {
                 break;
             case 'update-dm':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    if (empty($_POST['name-category'])) {
-                        $notify = "Không được bỏ trống tên danh mục";
-                        header('location:index.php?act=editCategory');
+                $name_category = $_POST['name-category'];
+                $id = $_POST['id'];
+                    if (empty($name_category)) {
+                        $_SESSION['error'] = "Không được bỏ trống tên danh mục.";
+                        header("location:index.php?act=editCategory&id=$id");
                     } else {
-                        $name_category = $_POST['name-category'];
-                        $id = $_POST['id'];
                         update_danhmuc($name_category, $id);
                         header('location:index.php?act=listCategory');
                     }
@@ -42,7 +42,7 @@ if($_SESSION['account']['role'] == 1) {
             case "addCategory":
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if (empty($_POST['name-category'])) {
-                        $notify = "Không được bỏ trống tên danh mục";
+                        $_SESSION['error'] = "Không được bỏ trống tên danh mục.";
                     } else {
                         $name_category = $_POST['name-category'];
                         insert_danhmuc($name_category);
@@ -71,12 +71,10 @@ if($_SESSION['account']['role'] == 1) {
                 break;
             case 'updateProduct':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    if (empty($_POST['name-product']) || empty($_POST['price'])) {
-                    } else {
                         $id_category = $_POST['category'];
-                        $name_product = $_POST['name-product'];
+                        $id_product = $_POST['id'];
+                        $name_product = $_POST['name_product'];
                         $price = $_POST['price'];
-//                             $discount = $_POST['discount'];
                         if ($_POST['discount'] == "") {
                             $discount = 0;
                         } else {
@@ -95,9 +93,19 @@ if($_SESSION['account']['role'] == 1) {
                         if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
                             $image = $_FILES["img"]["name"];
                         }
-                        update_sanpham($name_product, $price, $discount, $image, $id_category, $chip, $ram, $screen, $camera, $camera_selfie, $origin,$total, $id);
-                        header('location:index.php?act=listProduct');
-                    }
+                        if($total < 0 ){
+                            $_SESSION['error'] = "Số lượng không hợp lệ";
+                            header("location:index.php?act=editProduct&id=$id_product");
+                        }elseif($discount > $price || $discount < 0 || $price < 0){
+                            $_SESSION['error'] = "Giá không hợp lệ";
+                            header("location:index.php?act=editProduct&id=$id_product");
+                        }elseif(empty($name_product) || empty($price) || empty($total) || empty($id_category)){
+                            $_SESSION['error'] = "Vui lòng điền đủ thông tin sản phẩm";
+                            header("location:index.php?act=editProduct&id=$id_product");
+                        }else{
+                            update_sanpham($name_product, $price, $discount, $image, $id_category, $chip, $ram, $screen, $camera, $camera_selfie, $origin,$total, $id);
+                            header('location:index.php?act=listProduct');
+                        }
                 }
                 $listdm = select_all_danhmuc();
                 break;
@@ -130,10 +138,14 @@ if($_SESSION['account']['role'] == 1) {
                     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
                         $image = $_FILES["img"]["name"];
                     } else {
-                        $notify = "Không thể upload file";
+                        $_SESSION['error'] = "Không thể upload file.";
                     }
-                    if (empty($name_product) || empty($price) || empty($id_category)) {
-                        $notify = "Không được để trống thông tin";
+                    if(empty($name_product) || empty($price) || empty($total) || empty($id_category) || empty($img)){
+                        $_SESSION['error'] = "Vui lòng điền đủ thông tin sản phẩm.";
+                    }elseif($discount > $price || $discount < 0 || $price < 0){
+                        $_SESSION['error'] = "Giá không hợp lệ.";
+                    }elseif($total < 0 ){
+                        $_SESSION['error'] = "Số lượng không hợp lệ.";
                     } else {
                         insert_sanpham($name_product, $price, $discount, $img, $id_category, $chip, $ram, $screen, $camera, $camera_selfie, $origin,$total);
                         header('location:index.php?act=listProduct');
@@ -161,7 +173,7 @@ if($_SESSION['account']['role'] == 1) {
                     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
                         $img_user = $_FILES["img"]["name"];
                     } else {
-                        echo $notify = "Không thể upload file";
+                        $_SESSION['error'] = "Không thể upload được file.";
                     }
                     $account = $_POST['account'];
                     $password = $_POST['pass'];
@@ -174,9 +186,13 @@ if($_SESSION['account']['role'] == 1) {
                         $role = 0;
                     }
                     $id = $_POST['id'];
-                    update_user($name_user, $img_user, $account, $password, $email, $phone, $address, $role, $id);
-//                    $_SESSION['account'] = select_account($account, $password);
-                    header('location:index.php?act=listUser');
+                    if(empty($email)) {
+                        $_SESSION['error'] = "Không thể để trống email.";
+                        header("location:index.php?act=editUser&id=$id");
+                    }else {
+                        update_user($name_user, $img_user, $account, $password, $email, $phone, $address, $role, $id);
+                        header('location:index.php?act=listUser');
+                    }
                 }
                 break;
             case "addUser":
@@ -192,7 +208,7 @@ if($_SESSION['account']['role'] == 1) {
                     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
                         $img_user = $_FILES["img"]["name"];
                     } else {
-                        echo $notify = "Không thể upload file";
+                        $_SESSION['error'] = "Không thể upload file.";
                     }
                     if ($_POST['role'] == 1) {
                         $role = 1;
@@ -201,10 +217,9 @@ if($_SESSION['account']['role'] == 1) {
                     }
 
                     if (empty($email) || empty($account) || empty($pass)) {
-                        $notify = "Vui lòng điền thông tin";
+                        $_SESSION['error'] = "Không thể để trống thông tin.";
                     } else {
                         insert_user($name_user, $img_user, $account, $pass, $email, $phone, $address, $role);
-                        $notify = "Thêm thành công";
                         header('location:index.php?act=listUser');
                     }
                 }

@@ -1,3 +1,4 @@
+<?php if(isset($_SESSION['account'])){ ?>
 <body>
 <div class="myOrders-container">
     <div></div>
@@ -28,7 +29,6 @@
             <div class="block-cart">
 
                 <input name="id_product" value="<?= $value['id_product'] ?>" type="hidden">
-                <input class="checkbox-cart" type="checkbox">
                 <img src="upload/<?= $value['img_product'] ?>" alt="">
                 <div class="inFor_product">
                     <div class="name-product-cart">
@@ -124,6 +124,14 @@
                                     <?=$statusDiffirent ?>
                                 </span></td>
                     </tr>
+                    <tr class="container-information">
+                        <td><label class="label-orderDetail" for="">
+                                Thanh toán:
+                            </label></td>
+                        <td> <span>
+                                    <?= ($pay == 0) ? "Chưa thanh toán" : "Đã thanh toán" ?>
+                                </span></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -131,7 +139,7 @@
             <?=number_format($total_money, 0, '.', '.') ?> VNĐ
         </h4>
         <div class="comback">
-            <a href="index.php?act=myOrders">Đơn Mua</a>
+            <a href="index.php?act=myOrders&status=All">Đơn Mua</a>
         </div>
     </form>
 
@@ -139,3 +147,4 @@
 <div></div>
 </div>
 </body>
+<?php }else{header("location:admin/views/error.php");} ?>

@@ -6,9 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="c0823c0d-92e9-4cb6-96c1-6bf321d65baa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/category/addCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/category/addCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/category/editCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/category/editCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/comment/listComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/comment/listComment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/orders/detailOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/orders/detailOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/orders/listOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/orders/listOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/product/addProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/product/addProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/product/editProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/product/editProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/user/addUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/user/addUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/user/editUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/user/editUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/views/user/listUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/user/listUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/addToCart.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pages/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/myOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/myOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/myOrdersDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/myOrdersDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/tableOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/tableOrders.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,28 +55,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/ProjectOne",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "web-ide.project.structure",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Applications/XAMPP/xamppfiles/htdocs/ProjectOne&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/image" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/views/login" />
       <recent name="$PROJECT_DIR$/model/admin" />
       <recent name="$PROJECT_DIR$/model/user" />
       <recent name="$PROJECT_DIR$/views/pages" />
@@ -79,9 +94,7 @@
       <workItem from="1700008964723" duration="14208000" />
       <workItem from="1700444641489" duration="404000" />
       <workItem from="1700785643499" duration="42880000" />
-      <workItem from="1701179195765" duration="4000" />
-      <workItem from="1701217995353" duration="16022000" />
-      <workItem from="1701269215624" duration="17096000" />
+      <workItem from="1701421979849" duration="15375000" />
     </task>
     <servers />
   </component>
