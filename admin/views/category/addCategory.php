@@ -18,6 +18,12 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="validation">
+                        <?php if (isset($_SESSION['error'])){
+                            echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
+                            unset($_SESSION['error']);
+                        } ?>
+                    </div>
                     <div class="add">
                         <button class="btn-list" type="submit"><a href="index.php?act=listCategory">Danh
                                 mục</a></button>

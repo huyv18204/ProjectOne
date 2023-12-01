@@ -36,6 +36,7 @@
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Ngày đặt hàng</th>
+                                <th>Phương thức thanh toán</th>
                                 <th>Trạng thái đơn hàng</th>
                                 <th>Chức năng</th>
                             </tr>
@@ -58,6 +59,11 @@
                             }elseif ($status == 5){
                                 $statusDiffirent = 'Hoàn tất';
                             }
+                            if($value['pay'] == 0){
+                                $payRoll = "Thanh toán khi nhận hàng";
+                            } else{
+                                $payRoll = "Thanh toán MOMO";
+                            }
                             $path_detail = 'index.php?act=detailOrders&codeOder=' . $code_order;
                             $path_updateStatus = 'index.php?act=updateStatus&codeOder=' . $code_order;
                             echo '
@@ -69,6 +75,8 @@
                         <td>' . $email . '</td>
                         <td>'.$phone.'</td>
                         <td>'.$date_order.'</td>
+                        <td>'.$payRoll.'</td>
+                        
                         <td>' . $statusDiffirent . '</td>
                         <td class="">
                                             ';?>
@@ -127,6 +135,11 @@
                         }elseif ($status == 5){
                             $statusDiffirent = 'Hoàn tất';
                         }
+                        if($value['pay'] == 0){
+                            $payRoll = "Thanh toán khi nhận hàng";
+                        } else{
+                            $payRoll = "Thanh toán MOMO";
+                        }
                         $path_detail = 'index.php?act=detailOrders&codeOder=' . $code_order;
                         $path_updateStatus = 'index.php?act=updateStatus&codeOder=' . $code_order;
                         echo '
@@ -138,6 +151,7 @@
                         <td>' . $email . '</td>
                         <td>'.$phone.'</td>
                         <td>'.$date_order.'</td>
+                        <td>'.$payRoll.'</td>
                         <td>' . $statusDiffirent . '</td>
                         <td class="purchase-button">
                                             ';?>
@@ -148,10 +162,10 @@
                                     href="javascript:confirmSuccess('<?php echo $path_updateStatus?>&status=<?=$status ?>')"><i
                                         class="fa-solid fa-check fa-xl" style="color: green"></i></i></i></a>
                             </button>
-                            <button class="btn-red">
-                                <a class="cancel" href="javascript:confirmSuccess('<?php echo $path_updateStatus?>')"><i
-                                        class="fa-solid fa-xmark fa-xl" style="color: red"></i></i></i></a>
-                            </button>
+<!--                            <button class="btn-red">-->
+<!--                                <a class="cancel" href="javascript:confirmSuccess('--><?php //echo $path_updateStatus?><!--')"><i-->
+<!--                                        class="fa-solid fa-xmark fa-xl" style="color: red"></i></i></i></a>-->
+<!--                            </button>-->
                             <button class="edit">
                                 <a href="<?= $path_detail?>"><i class="fas fa-edit"></i></a>
                             </button>

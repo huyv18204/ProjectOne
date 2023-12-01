@@ -70,7 +70,11 @@ if (isset($_GET["act"])) {
                     $login = select_account($account, $pass);
                     if (is_array($login)) {
                         $_SESSION['account'] = $login;
-                        header("location:index.php?act=home");
+                        if($_SESSION['account']['role'] == 1){
+                            header("location:admin/index.php?act=listProduct");
+                        }else{
+                            header("location:index.php?act=home");
+                        }
                         exit;
                     } else {
                         $_SESSION['error'] = "Thông tin đăng nhập không chính xác";
@@ -347,44 +351,82 @@ if (isset($_GET["act"])) {
             $checkPhone = '/^(0|\+84)(3[2-9]|5[2689]|7[06789]|8[1-689]|9[0-9])[0-9]{7}$/';
             $checkEmail = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
             if (isset($_SESSION['account']) && isset($_SESSION['cart'])){
-            if(isset($_POST['btn-submit'])){
+            if(isset($_POST['btn-submit'])) {
                 $nameOrder = $_POST['name_order'];
                 $phoneOrder = $_POST['phone_order'];
                 $emailOrder = $_POST['email_order'];
                 $addressOrder = $_POST['address_order'];
                 $takeNode = $_POST['takeNode'];
-                $codeOrders = rand(0,9999);
+                $codeOrders = rand(0, 9999);
                 $pay = $_POST['pay'];
                 $idUser = $_SESSION['account']['id_user'];
                 $total = $_POST['total'];
                 $dateOrder = date("d/m/Y");
                 $status = 1;
-                if(empty($nameOrder) || empty($phoneOrder) || empty($emailOrder) || empty($addressOrder) || empty($total)) {
-                    $_SESSION['error'] = "Không được để trống thông tin.";
-                }elseif(!isset($pay)){
-                    $_SESSION['error'] = "Vui lòng chọn phương thức thanh toán.";
-                }else{
-                    if(!preg_match($checkPhone,$phoneOrder)){
-                        $_SESSION['error'] = "Số điện thoại không hợp lệ.";
-                    }elseif (!preg_match($checkEmail,$emailOrder)){
-                        $_SESSION['error'] = "Email không hợp lệ.";
-                    }else {
-                        insert_orders($codeOrders, $dateOrder, $pay, $status, $total, $nameOrder, $emailOrder, $phoneOrder, $addressOrder, $takeNode, $idUser);
-                        foreach ($_SESSION['cart'] as $key => $cart) {
+                if ($_POST['pay'] == 0) {
+                    if (empty($nameOrder) || empty($phoneOrder) || empty($emailOrder) || empty($addressOrder) || empty($total)) {
+                        $_SESSION['error'] = "Không được để trống thông tin.";
+                    } elseif (!isset($pay)) {
+                        $_SESSION['error'] = "Vui lòng chọn phương thức thanh toán.";
+                    } else {
+                        if (!preg_match($checkPhone, $phoneOrder)) {
+                            $_SESSION['error'] = "Số điện thoại không hợp lệ.";
+                        } elseif (!preg_match($checkEmail, $emailOrder)) {
+                            $_SESSION['error'] = "Email không hợp lệ.";
+                        } else {
+                            insert_orders($codeOrders, $dateOrder, $pay, $status, $total, $nameOrder, $emailOrder, $phoneOrder, $addressOrder, $takeNode, $idUser);
+                            foreach ($_SESSION['cart'] as $key => $cart) {
                                 $idProduct = $cart['id_product'];
                                 $quantity = $cart['quantity'];
                                 $price = $cart['price'] * $quantity;
                                 insert_orders_detail($codeOrders, $idProduct, $quantity, $price);
-                                update_total($idProduct,$quantity);
+                                update_total($idProduct, $quantity);
+                            }
+                            unset($_SESSION['cart']);
+                            header("location:index.php?act=success");
                         }
-                        unset($_SESSION['cart']);
-                        header("location:index.php?act=myOrders&status=All");
                     }
+                }else{
+                    $_SESSION['information'] = [
+                        'nameOrder' => $nameOrder,
+                        'phoneOrder' => $phoneOrder,
+                        'emailOrder' => $emailOrder,
+                        'addressOder' =>$addressOrder,
+                        'takeNode' => $takeNode,
+                        'total' => $total,
+                    ];
+                    header("location:views/momo/handle.php");
                 }
             }
                 include "views/pages/order.php";
             }else{
                 header("location:admin/views/error.php");
+            }
+            break;
+        case 'momo':
+            if(isset($_GET['partnerCode'])) {
+                $nameOrder = $_SESSION['information']['nameOrder'];
+                $phoneOrder = $_SESSION['information']['phoneOrder'];
+                $emailOrder = $_SESSION['information']['emailOrder'];
+                $addressOrder = $_SESSION['information']['addressOder'];
+                $takeNode = $_SESSION['information']['takeNode'];
+                $total = $_GET['amount'];
+                $codeOrders = $_GET['orderId'];
+                $pay = 1;
+                $idUser = $_SESSION['account']['id_user'];
+                $dateOrder = date("d/m/Y");
+                $status = 1;
+                insert_orders($codeOrders, $dateOrder, $pay, $status, $total, $nameOrder, $emailOrder, $phoneOrder, $addressOrder, $takeNode, $idUser);
+                foreach ($_SESSION['cart'] as $key => $cart) {
+                    $idProduct = $cart['id_product'];
+                    $quantity = $cart['quantity'];
+                    $price = $cart['price'] * $quantity;
+                    insert_orders_detail($codeOrders, $idProduct, $quantity, $price);
+                    update_total($idProduct, $quantity);
+                }
+                unset($_SESSION['information']);
+                unset($_SESSION['cart']);
+                header("location:index.php?act=success");
             }
             break;
         case 'resultSearch':
@@ -427,6 +469,9 @@ if (isset($_GET["act"])) {
                 $code_order= $_GET['codeOrder'];
                 $lisProduct = OrdersDetail($code_order);
             require_once 'views/pages/myOrdersDetail.php';
+        case 'success':
+            require_once 'views/pages/successOder.php';
+            break;
     }
 } else {
     $listsp = select_all_product();
@@ -435,4 +480,5 @@ if (isset($_GET["act"])) {
 }
 include 'views/footer.php';
 ?>
+
 

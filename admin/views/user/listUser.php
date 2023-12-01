@@ -52,13 +52,17 @@
                         <td>' . $role_user . '</td>
                         ';?>
                         <td>
+                            <?php if($role != 1){ ?>
                             <button class="delete">
                                 <a href="javascript:confirmDeleTe('<?php echo $path_del?>')"><i
                                         class="fas fa-trash-alt"></i></a>
                             </button>
+                            <?php }?>
+
                             <button class="edit">
                                 <a href="<?php echo $path_edit?>"><i class="fas fa-edit"></i></a>
                             </button>
+
                         </td>
                         </tr>
                         </tbody>

@@ -26,7 +26,7 @@
                             </tr>
                             <tr>
                                 <td>Mật khẩu</td>
-                                <td><input name="pass" value="" type="text"></td>
+                                <td><input name="pass" value="" type="password"></td>
                             </tr>
                             <tr>
                                 <td>Địa chỉ</td>
@@ -34,11 +34,11 @@
                             </tr>
                             <tr>
                                 <td>Số điện thoại</td>
-                                <td><input name="phone" value="" type="text"></td>
+                                <td><input name="phone" value="" type="number"></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td><input name="email" value="" type="text"></td>
+                                <td><input name="email" value="" type="email"></td>
                             </tr>
                             <tr>
                                 <td>Vai trò</td>
@@ -56,6 +56,12 @@
                         </tbody>
 
                     </table>
+                    <div class="validation">
+                        <?php if (isset($_SESSION['error'])){
+                            echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
+                            unset($_SESSION['error']);
+                        } ?>
+                    </div>
                     <div class="add">
                         <button class="btn-list" type="submit"><a href="index.php?act=listUser">Danh sách khách hàng</a>
                         </button>

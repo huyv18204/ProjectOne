@@ -13,7 +13,6 @@
                     <table class="commodities">
                         <thead>
                             <tr>
-                                <th width="10"><input type="checkbox"></th>
                                 <th>ID</th>
                                 <th>Nội dung</th>
                                 <th>Sản phẩm</th>
@@ -30,7 +29,6 @@
 
                                             <tbody class="product-list">
                     <tr>
-                        <td width="10"><input type="checkbox"></td>
                         <td>' . $id_comment . '</td>
                         <td>' . $content . '</td>
                         <td>' . $name_product . '</td>';

@@ -14,7 +14,7 @@
                         <tbody class="product-list">
                             <tr>
                                 <td>Tên sản phẩm</td>
-                                <td><input value="<?php echo $listsp['name_product'] ?>" name="name-product"
+                                <td><input value="<?php echo $listsp['name_product'] ?>" name="name_product"
                                         type="text"></td>
                             </tr>
                             <tr>
@@ -79,6 +79,12 @@
                         </tbody>
 
                     </table>
+                    <div class="validation">
+                        <?php if (isset($_SESSION['error'])){
+                            echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
+                            unset($_SESSION['error']);
+                        } ?>
+                    </div>
                     <div class="add">
                         <input type="hidden" name="id" value="<?php echo $listsp['id_product'] ?>">
                         <button class="btn-list" type="submit"><a href="index.php?act=listProduct">Danh sách sản

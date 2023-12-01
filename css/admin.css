@@ -355,3 +355,11 @@ td>input {
 .purchase-button {
     width: 120px;
 }
+
+.validation{
+    margin-top: 10px;
+    height: 18px;
+}
+.validation-error{
+    color: red;
+}
