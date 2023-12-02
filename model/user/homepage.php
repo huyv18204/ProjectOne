@@ -29,7 +29,7 @@ function select_one_sanpham($id_product)
 
 function select_sp_samekind($id_product)
 {
-    $sql = "select * from product where id_product != '$id_product' order by id_product desc";
+    $sql = "select * from product where id_product != '$id_product' order by id_product desc limit 0,7";
     $list = pdo_query($sql);
     return $list;
 }
@@ -43,7 +43,7 @@ function select_sp_by_dm($id)
 
 function select_all_product()
 {
-    $sql = "SELECT * FROM product where id_category != 7 order by id_product desc limit 0,9";
+    $sql = "SELECT * FROM product where id_category != 7 order by id_product desc limit 0,12";
     $listsp = pdo_query($sql);
     return $listsp;
 }

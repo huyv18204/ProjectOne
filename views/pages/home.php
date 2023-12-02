@@ -1,14 +1,20 @@
 <section class="main-body">
     <div class="banner">
+<!--        <div class="slide active">-->
+<!--            <a href=""><img src="image/Banner.png" alt=""></a>-->
+<!--        </div>-->
         <div class="slide active">
-            <a href=""><img src="image/Banner.png" alt=""></a>
+            <a href="index.php?act=deltailProduct&id=29"><img src="image/Banner.jpeg" alt=""></a>
         </div>
 <!--        <div class="slide active">-->
-<!--            <a href=""><img style="margin: auto;width: 1200px;margin-top: 40px" src="image/banner.jpeg" alt=""></a>-->
+<!--            <a href=""><img src="image/Banner_A.png" alt=""></a>-->
 <!--        </div>-->
-<!--        <div class="slide active">-->
-<!--            <img style="margin: auto;width: 1200px;margin-top: 40px" src="image/banner-2.jpeg" alt="">-->
-<!--        </div>-->
+        <div class="slide active">
+            <a href="index.php?act=deltailProduct&id=25"><img src="image/Banner_B.png" alt=""></a>
+        </div>
+        <div class="slide active">
+            <a href="index.php?act=deltailProduct&id=27"> <img src="image/Banner_C.png" alt=""></a>
+        </div>
     </div>
     <main>
         <section class="main">

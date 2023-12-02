@@ -1,8 +1,6 @@
 <body>
     <div class="container-admin">
-        <?php
-    require_once 'views/sidebar.php';
-    ?>
+        <?php require_once 'views/sidebar.php'; ?>
         <div class="col-2-admin">
             <div class="commodities-title">
                 <h4>Thêm danh mục<h4>
@@ -19,10 +17,11 @@
                         </tbody>
                     </table>
                     <div class="validation">
-                        <?php if (isset($_SESSION['error'])){
-                            echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
-                            unset($_SESSION['error']);
-                        } ?>
+                        <?php
+                            if (isset($_SESSION['error'])){
+                                echo "<span class='validation-error'>". $_SESSION['error'] ."</span>";
+                                unset($_SESSION['error']);
+                            } ?>
                     </div>
                     <div class="add">
                         <button class="btn-list" type="submit"><a href="index.php?act=listCategory">Danh
@@ -33,5 +32,4 @@
             </div>
         </div>
     </div>
-
 </body>

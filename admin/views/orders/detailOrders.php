@@ -1,8 +1,6 @@
 <body>
     <div class="container-admin">
-        <?php
-    require_once 'views/sidebar.php';
-    ?>
+        <?php require_once 'views/sidebar.php'; ?>
         <div class="col-2-admin">
             <div class="commodities-title">
                 <h4>Chi tiết đơn hàng<h4>
@@ -31,22 +29,19 @@
                     <tr>
                         <td>' . $code_order . '</td>
                         <td>' . $name_product . '</td>
-                         <td>'.$quantity.'</td>
+                        <td>'.$quantity.'</td>
                         <td>' . number_format($price, 0, '.', '.') . '</td>
-                        <td>' . number_format($total, 0, '.', '.') . '</td>
-                                            ';?>
-
-                            <?php
-                    } ?>
+                        <td>' . number_format($total, 0, '.', '.') . '</td>';?>
+                    <?php } ?>
 
                         </tbody>
                     </table>
                     <div>
-                        <div style="margin-top: 15px;padding-bottom: 15px"><span
-                                style="font-size: 18px;font-weight: bold">Tổng tiền:<span style="color: red">
-                                    <?=number_format($total_money, 0, '.', '.') ?> VNĐ</span></span></div>
+                        <div style="margin-top: 15px;padding-bottom: 15px"><span style="font-size: 18px;font-weight: bold">Tổng tiền:
+                                <span style="color: red"><?=number_format($total_money, 0, '.', '.') ?> VNĐ</span>
+                            </span>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>

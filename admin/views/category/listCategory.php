@@ -9,8 +9,8 @@
             </div>
             <div class="commodities-container">
                 <div class="function-commodities">
-                    <button class="add-commodities" type="submit"><a href="index.php?act=addCategory">Tạo danh mục
-                            mới</a>
+                    <button class="add-commodities" type="submit">
+                        <a href="index.php?act=addCategory">Tạo danh mục mới</a>
                     </button>
                 </div>
                 <div class="line-commodities"></div>
@@ -25,27 +25,27 @@
                         </thead>
                         <tbody class="product-list">
                             <?php foreach ($listdm as $value) {
-                        extract($value);
-                        $path_edit = 'index.php?act=editCategory&id=' . $id_category;
-                        $path_del = 'index.php?act=del-dm&id=' . $id_category;
-                        echo '
-                            <tr>
-                        
-                        <td>' . $id_category . '</td>
-                        <td>' . $name_category . '</td>
-                        <td>'
-                        ;?>
-                            <button class="delete">
-                                <a href="javascript:confirmDeleTe('<?php echo $path_del?>')"><i
-                                        class="fas fa-trash-alt"></i></a>
-                            </button>
-                            <button class="edit">
-                                <a href="<?php echo $path_edit?>"><i class="fas fa-edit"></i></a>
-                            </button>
-                            </td>
-                            </tr>
-                            <?php
-                    } ?>
+                                extract($value);
+                                $path_edit = 'index.php?act=editCategory&id=' . $id_category;
+                                $path_del = 'index.php?act=del-dm&id=' . $id_category;
+                                echo '
+                                    <tr>
+                                        <td>' . $id_category . '</td>
+                                        <td>' . $name_category . '</td>
+                                        <td>';?>
+                                            <button class="delete">
+                                                <a href="javascript:confirmDeleTe('<?php echo $path_del?>')">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </button>
+                                            <button class="edit">
+                                                <a href="<?php echo $path_edit?>">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                     <div id="pagination"></div>

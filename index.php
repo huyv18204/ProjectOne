@@ -44,6 +44,13 @@ if (isset($_GET["act"])) {
                 if (empty($account) || empty($email) || empty($pass) || empty($repass)) {
                     $_SESSION['error'] = "Vui lòng điền thông tin.";
                 } else {
+                    $check = false;
+                    $listAccount = Account();
+                    foreach ($listAccount as $value){
+                        if ($value['account'] == $account){
+                            $check = true;
+                        }
+                    }
                     if (!preg_match($checkEmail, $email)) {
                         $_SESSION['error'] = "Email không hợp lệ.";
                     } elseif (!preg_match($checkPassAndAcc, $account)) {
@@ -51,11 +58,15 @@ if (isset($_GET["act"])) {
                     } elseif (!preg_match($checkPassAndAcc, $pass)) {
                         $_SESSION['error'] = "Mật khẩu phải có 6 kí tự.";
                     } else {
-                        if ($pass == $repass) {
-                            insert_account($account, $pass, $email);
-                            header("location:index.php?act=login");
-                        } else {
-                            $_SESSION['error'] = "Mật khẩu không khớp.";
+                        if ($check){
+                            $_SESSION['error'] = "Tên tài khoản đã tồn tại.";
+                        }else{
+                            if ($pass == $repass) {
+                                insert_account($account, $pass, $email);
+                                header("location:index.php?act=login");
+                            } else {
+                                $_SESSION['error'] = "Mật khẩu không khớp.";
+                            }
                         }
                     }
                 }
