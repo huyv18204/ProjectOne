@@ -16,50 +16,13 @@ window.addEventListener("click", function () {
     categoryList.style.display = "none";
 });
 
-// function increaseValue(button) {
-//     let parent = button.parentElement;
-//     let quantity_old = parent.children[1];
-//     let quantity_new = parseInt(quantity_old.innerHTML) + 1;
-//     quantity_old.innerText = quantity_new;
-// }
-//
-// function reduceValue(button) {
-//     let parent = button.parentElement;
-//     let quantity_old = parent.children[1];
-//     let quantity_new = parseInt(quantity_old.innerHTML) - 1;
-//     if (quantity_new <= 0){
-//         quantity_new = 1;
-//     }
-//     quantity_old.innerText = quantity_new;
-//
-// }
-
-// function increaseValue(button) {
-//     var displayElement = button.parentElement.querySelector('#display');
-//     var quantity = parseInt(displayElement.value);
-//
-//     quantity += 1;
-//     displayElement.value = quantity;
-// }
-//
-// function reduceValue(button) {
-//     var displayElement = button.parentElement.querySelector('#display');
-//     var quantity = parseInt(displayElement.value);
-//
-//     if (quantity > 1) {
-//         quantity -= 1;
-//         displayElement.value = quantity;
-//     }
-// }
-
-
 $(document).ready(function () {
     $('.row-product').slick(
         {
             slidesToShow: 4,
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 3000,
             arrows: false
         }
     );
@@ -72,7 +35,7 @@ $(document).ready(function () {
             slidesToShow: 1,
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 1500,
+            autoplaySpeed: 4000,
             arrows: false
         }
     );

@@ -39,4 +39,10 @@ function check_inFor($account, $email)
     $list = pdo_query_one($sql);
     return $list;
 }
+
+function Account(){
+    $sql = "Select account from user ";
+    $list = pdo_query($sql);
+    return $list;
+}
 ?>
