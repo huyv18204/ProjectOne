@@ -20,7 +20,7 @@ if (!empty($_SESSION['cart'])) {
     // Lấy sản phẩm trong bảng sản phẩm theo id
     $dataDb = loadProductCart($idList);}?>
 
-<div  class="cart-container">
+<div class="cart-container">
     <div></div>
     <div class="cart-columns-1">
         <?php
@@ -43,7 +43,8 @@ if (!empty($_SESSION['cart'])) {
             <div class="block-cart">
 
                 <input name="id_product" value="<?= $value['id_product'] ?>" type="hidden">
-                <a href="index.php?act=deltailProduct&id=<?=$value['id_product']?>"><img src="upload/<?= $value['img_product'] ?>" alt=""></a>
+                <a href="index.php?act=deltailProduct&id=<?=$value['id_product']?>"><img
+                        src="upload/<?= $value['img_product'] ?>" alt=""></a>
                 <div class="inFor_product">
                     <div class="name-product-cart">
                         <h4>Tên sản phẩm:</h4>
@@ -56,11 +57,14 @@ if (!empty($_SESSION['cart'])) {
                     <div class="quantity-product-cart">
                         <h4>Số lượng:</h4>
                         <div class="adjust">
-                            <input min="1" id="quantity_<?= $value['id_product'] ?>" type="number" name="quantity" oninput="updateQuantity(<?= $value['id_product'] ?>, <?= $key ?>)" value="<?= $quantity ?>">
+                            <input min="1" id="quantity_<?= $value['id_product'] ?>" type="number" name="quantity"
+                                oninput="updateQuantity(<?= $value['id_product'] ?>, <?= $key ?>)"
+                                value="<?= $quantity ?>">
                         </div>
                     </div>
                 </div>
-                <a class="bin" onclick="removeFormCart(<?= $value['id_product'] ?>)"><i class="fa-solid fa-xmark" style="color: #000000;"></i></a>
+                <a class="bin" onclick="removeFormCart(<?= $value['id_product'] ?>)"><i class="fa-solid fa-xmark"
+                        style="color: #000000;"></i></a>
         </form>
     </div>
     <?php }} ?>
@@ -84,4 +88,3 @@ if (!empty($_SESSION['cart'])) {
 </div>
 <div></div>
 </div>
-

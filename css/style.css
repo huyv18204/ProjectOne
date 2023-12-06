@@ -166,13 +166,14 @@
 }
 
 /*BANNER*/
-.banner{
-    width: 1250px;
-    margin: auto;
-    margin-top: 40px
+.banner {
+    /*width: 1250px;*/
+    /*margin: auto; */
+    /*margin-top: 40px*/
 }
+
 .banner img {
-    width: 1250px;
+    width: 100%;
 }
 
 /*HOME*/
@@ -1092,9 +1093,11 @@ h2.auth-title {
     justify-content: flex-start;
     padding: 10px 50px 10px 50px;
 }
+
 .adjust {
     margin-left: 20px;
 }
+
 .name-product-cart {
     width: 500px;
 }
@@ -1203,9 +1206,11 @@ h2.auth-title {
     border: none;
     background-color: #ffffff;
 }
-.fa-solid fa-xmark:hover{
+
+.fa-solid fa-xmark:hover {
     color: red;
 }
+
 .inFor_product {
     width: 400px;
 }
@@ -1317,10 +1322,12 @@ h2.auth-title {
     width: 100%;
     margin-top: 30px;
 }
-.myOrders a{
+
+.myOrders a {
     text-decoration: none;
     color: black;
 }
+
 .inFo-purchase img {
     width: 50px;
     margin-left: 60px;
@@ -1435,7 +1442,8 @@ h2.auth-title {
     /*margin-right: 10px;*/
     border-radius: 5px;
 }
-.checkOrder a{
+
+.checkOrder a {
     text-decoration: none;
     color: white;
 }
@@ -1497,15 +1505,16 @@ h2.auth-title {
     /*margin-left: 30px;*/
 }
 
-.detail_order a{
+.detail_order a {
     text-decoration: none;
     color: white;
 }
 
-.validation{
+.validation {
     height: 18px;
 }
-.validation-error{
+
+.validation-error {
     color: red;
 }
 

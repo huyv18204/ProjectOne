@@ -480,6 +480,7 @@ if (isset($_GET["act"])) {
                 $code_order= $_GET['codeOrder'];
                 $lisProduct = OrdersDetail($code_order);
             require_once 'views/pages/myOrdersDetail.php';
+            break;
         case 'success':
             require_once 'views/pages/successOder.php';
             break;
