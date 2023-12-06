@@ -39,10 +39,10 @@
 </div>
 </div>
 </div>
-    <div class="product-col-2">
-        <div class="nav-bar-product">
-            <ul class="nav-bar-product-menu">
-                <?php
+<div class="product-col-2">
+    <div class="nav-bar-product">
+        <ul class="nav-bar-product-menu">
+            <?php
                 foreach ($list_dm as $dm) {
                     extract($dm);
                     $path_deltail = 'index.php?act=category&id=' . $id_category;
@@ -54,7 +54,7 @@
                 ';
                 }
                 ?>
-            </ul>
-        </div>
+        </ul>
     </div>
+</div>
 </div>

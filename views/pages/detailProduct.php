@@ -77,7 +77,9 @@ if(isset($list_sp)){
 
                         </div>
                         <div class="btn-add-buy">
-                            <button data-id="<?= $id_product ?>" onclick="addToCart(<?= $id_product ?>, '<?= $name_product ?>', <?= $price ?>, <?= $img_product ?>)" name="btnAddToCart" class="add-product"><span>THÊM VÀO GIỎ HÀNG</span></button>
+                            <button data-id="<?= $id_product ?>"
+                                onclick="addToCart(<?= $id_product ?>, '<?= $name_product ?>', <?= $price ?>, <?= $img_product ?>)"
+                                name="btnAddToCart" class="add-product"><span>THÊM VÀO GIỎ HÀNG</span></button>
                             <button class="buy-product"><span>MUA NGAY</span></button>
                         </div>
                     </div>
@@ -166,27 +168,28 @@ if(isset($list_sp)){
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-    let totalProduct = document.getElementById('totalProduct');
-    function addToCart(productId, productName, productPrice,productImg) {
-        // console.log(productId, productName, productPrice);
-        // Sử dụng jQuery
-        $.ajax({
-            type: 'POST',
-            // Đường dẫ tới tệp PHP xử lý dữ liệu
-            url: 'index.php?act=addToCart',
-            data: {
-                id_product: productId,
-                name_product: productName,
-                price: productPrice,
-                img_product: productImg
-            },
-            success: function(response) {
-                totalProduct.innerText = response;
-                alert('Bạn đã thêm sản phẩm vào giỏ hàng thành công!')
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-    }
+let totalProduct = document.getElementById('totalProduct');
+
+function addToCart(productId, productName, productPrice, productImg) {
+    // console.log(productId, productName, productPrice);
+    // Sử dụng jQuery
+    $.ajax({
+        type: 'POST',
+        // Đường dẫ tới tệp PHP xử lý dữ liệu
+        url: 'index.php?act=addToCart',
+        data: {
+            id_product: productId,
+            name_product: productName,
+            price: productPrice,
+            img_product: productImg
+        },
+        success: function(response) {
+            totalProduct.innerText = response;
+            alert('Bạn đã thêm sản phẩm vào giỏ hàng thành công!')
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
 </script>

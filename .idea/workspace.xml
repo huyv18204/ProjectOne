@@ -6,46 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c0823c0d-92e9-4cb6-96c1-6bf321d65baa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/views/category/addCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/category/addCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/views/category/editCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/category/editCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/views/category/listCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/category/listCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/views/comment/listComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/comment/listComment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/views/orders/detailOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/views/orders/detailOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/Banner_2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/Banner_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/banner-2.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/user/homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/user/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/1683605592281_thumb_iphone_11_didongviet.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/638076489861284291_sac-kep-35w-usb-c-power-adapter-1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/Banner_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/Banner_5.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/Banner_8.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/Footer.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/IMG_5462.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/IMG_5463.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/IMG_5465.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/IMG_5466.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/IMG_5470.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/beauty_1649850790634.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/deltail_1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/deltail_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/deltail_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/dt3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/dt5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/group_117_1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/group_118_2.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/group_169_2.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/group_193_4.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/group_211_1__1_2.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/iphone 11.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/side-bar.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/tick-green.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/detailProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/detailProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/myOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/myOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/resultSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/resultSearch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/tableOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/tableOrders.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +85,10 @@
       <workItem from="1701421979849" duration="16208000" />
       <workItem from="1701488032145" duration="3000" />
       <workItem from="1701488261965" duration="11000" />
-      <workItem from="1701516321920" duration="5485000" />
+      <workItem from="1701516321920" duration="7185000" />
+      <workItem from="1701585089939" duration="10000" />
+      <workItem from="1701650741723" duration="1231000" />
+      <workItem from="1701760163790" duration="3342000" />
     </task>
     <servers />
   </component>
