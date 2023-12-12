@@ -82,7 +82,7 @@ if (isset($_GET["act"])) {
                     if (is_array($login)) {
                         $_SESSION['account'] = $login;
                         if($_SESSION['account']['role'] == 1){
-                            header("location:admin/index.php?act=listProduct");
+                            header("location:admin/index.php?act=dashboard");
                         }else{
                             header("location:index.php?act=home");
                         }
@@ -492,5 +492,3 @@ if (isset($_GET["act"])) {
 }
 include 'views/footer.php';
 ?>
-
-
