@@ -12,9 +12,13 @@
     <div class="function-admin">
         <ul>
             <li>
+                <i class="fa-solid fa-chart-simple" style="color: #ffffff;"></i><a
+                        href="index.php?act=dashboard">Bảng Điều Khiển</a>
+            </li>
+            <li>
                 <i class="fa-solid fa-house" style="color: #ffffff;"></i><a
                     href="../../../ProjectOne/index.php?act=home">Trang
-                    Chủ</a>
+                    Web</a>
             </li>
             <li>
                 <i class="fa-solid fa-list-check" style="color: #ffffff;"></i><a href="index.php?act=listCategory">Quản
@@ -37,14 +41,6 @@
                 <i class="fa-solid fa-basket-shopping" style="color: #ffffff;"></i><a
                     href="index.php?act=listOrders">Quản Lí Đơn Hàng</a>
             </li>
-            <li>
-                <i class="fa-solid fa-chart-simple" style="color: #ffffff;"></i><a
-                    href="index.php?act=statistical">Thống
-                    kê</a>
-            </li>
-            <!--            <li>-->
-            <!--                <i class="fa-solid fa-user" style="color: #ffffff;"></i><a href="">Tài khoản</a>-->
-            <!--            </li>-->
         </ul>
     </div>
     <div class="logout-container">
