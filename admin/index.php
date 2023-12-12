@@ -9,13 +9,13 @@ include '../model/admin/product.php';
 include '../model/PDO.php';
 include '../model/admin/user.php';
 include '../model/admin/orders.php';
+include '../model/admin/dashboard.php';
 if($_SESSION['account']['role'] == 1) {
     include 'views/header.php';
 
     if (isset($_GET["act"])) {
         $act = $_GET["act"];
         switch ($act) {
-//danh muc        
             case "listCategory":
                 $listdm = select_all_danhmuc();
                 include "views/category/listCategory.php";
@@ -57,7 +57,6 @@ if($_SESSION['account']['role'] == 1) {
                 }
                 header("location:index.php?act=listCategory");
                 break;
-// San pham
             case "listProduct":
                 $listsp = select_all_sanpham();
                 include "views/product/listProduct.php";
@@ -266,6 +265,9 @@ if($_SESSION['account']['role'] == 1) {
                 }
                 $updateStatus = updateStatus($status,$code_order);
                 header("location:index.php?act=listOrders");
+                break;
+                case "dashboard";
+                include "views/dashboard/dashboard.php";
                 break;
         }
     } else {

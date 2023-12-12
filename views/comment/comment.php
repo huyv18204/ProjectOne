@@ -73,7 +73,7 @@ $count_comment = coutn_comment($id_product);
         $content = $_POST['content-comment'];
         $id_user = $_SESSION['account']['id_user'];
         $id_product = $_POST['id_product'];
-        $date_comment = date("h:i:sa Y/m/d");
+        $date_comment = date("d/m/Y");
         insert_comment($id_user,$id_product,$date_comment,$content);
         header("Location:" . $_SERVER['HTTP_REFERER']);
     }

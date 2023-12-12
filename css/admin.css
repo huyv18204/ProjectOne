@@ -364,3 +364,73 @@ td>input {
 .validation-error {
     color: red;
 }
+.dashboard{
+    margin: 30px 20px 0 15px ;
+}
+.component-dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: white;
+    height: 180px;
+}
+
+.child-dashboard {
+    width: 300px;
+    height: 115px;
+    margin: 20px;
+    color: white;
+}
+
+.child-dashboard>div {
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.child-dashboard p {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.component-dashboard>.green {
+    background-color: #72b058;
+    border-left: 10px solid #5f9847;
+}
+
+.component-dashboard>.red {
+    background-color: #e46050;
+    border-left: 10px solid #d6402d;
+}
+
+.component-dashboard>.orange {
+    background-color: rgb(244, 171, 66);
+    border-left: 10px solid rgb(194, 121, 20);
+}
+
+.component-dashboard>.blue {
+    background-color: #52bcdb;
+    border-left: 10px solid #2aacd4;
+}
+.chart{
+    display: grid;
+    grid-template-columns: 67% 2% 31%;
+    margin-top: 30px;
+    height: 500px;
+}
+
+.chart-bar{
+    width: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.chart-area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: white;
+}
