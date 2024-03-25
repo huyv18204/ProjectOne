@@ -78,7 +78,7 @@ if(isset($list_sp)){
                         </div>
                         <div class="btn-add-buy">
                             <button data-id="<?= $id_product ?>"
-                                onclick="addToCart(<?= $id_product ?>, '<?= $name_product ?>', <?= $price ?>, <?= $img_product ?>)"
+                                onclick="addToCart(<?= $id_product ?>, '<?= $name_product ?>', <?= $price ?>, <?= $img_product ?>, <?=$discount?>)"
                                 name="btnAddToCart" class="add-product"><span>THÊM VÀO GIỎ HÀNG</span></button>
                             <button class="buy-product"><span>MUA NGAY</span></button>
                         </div>
@@ -170,7 +170,7 @@ if(isset($list_sp)){
 <script>
 let totalProduct = document.getElementById('totalProduct');
 
-function addToCart(productId, productName, productPrice, productImg) {
+function addToCart(productId, productName, productPrice, productImg, discount) {
     // console.log(productId, productName, productPrice);
     // Sử dụng jQuery
     $.ajax({
@@ -181,7 +181,8 @@ function addToCart(productId, productName, productPrice, productImg) {
             id_product: productId,
             name_product: productName,
             price: productPrice,
-            img_product: productImg
+            img_product: productImg,
+            discount: discount
         },
         success: function(response) {
             totalProduct.innerText = response;

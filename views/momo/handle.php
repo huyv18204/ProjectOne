@@ -1,8 +1,6 @@
 <?php
 session_start();
 header('Content-type: text/html; charset=utf-8');
-
-
 function execPostRequest($url, $data)
 {
     $ch = curl_init($url);
@@ -35,17 +33,6 @@ $orderId = time() ."";
 $redirectUrl = "http://localhost/ProjectOne/index.php?act=momo";
 $ipnUrl = "http://localhost/ProjectOne/index.php?act=momo";
 $extraData = "";
-
-
-//    $partnerCode = $_POST["partnerCode"];
-//    $accessKey = $_POST["accessKey"];
-//    $serectkey = $_POST["secretKey"];
-//    $orderId = $_POST["orderId"]; // Mã đơn hàng
-//    $orderInfo = $_POST["orderInfo"];
-//    $amount = $_POST["amount"];
-//    $ipnUrl = $_POST["ipnUrl"];
-//    $redirectUrl = $_POST["redirectUrl"];
-//    $extraData = $_POST["extraData"];
 
     $requestId = time() . "";
     $requestType = "payWithATM";

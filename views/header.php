@@ -36,8 +36,10 @@
                     </div>
                     <div id="menu" class="user-info">
                         <ul>
-                            <li><a id="showButton" href="#"> <i class="fa-solid fa-user fa-lg"
-                                        style="color: #ffffff;"></i></a>
+                            <li>
+                                <a id="showButton" href="#">
+                                    <i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i>
+                                </a>
                                 <ul id="categoryList" style="display: none;">
                                     <?php if (!isset($_SESSION['account'])) {?>
                                     <li><a id="loginBtn" href="index.php?act=login">Đăng Nhập</a></li>
