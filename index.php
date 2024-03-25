@@ -255,6 +255,7 @@ if (isset($_GET["act"])) {
                 $productPrice = $_POST['price'];
                 $productImg = $_POST['img_product'];
                 $idUser = $_SESSION['account']['id_user'];
+                $discount = $_POST['discount'];
 
                 // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
                 $index = array_search($productId, array_column($_SESSION['cart'], 'id_product'));
@@ -270,6 +271,7 @@ if (isset($_GET["act"])) {
                         'img_product' => $productImg,
                         'price' => $productPrice,
                         'quantity' => 1,
+                        'discount' => $discount
                     ];
                     $_SESSION['cart'][] = $product;
                 }
@@ -389,7 +391,7 @@ if (isset($_GET["act"])) {
                             foreach ($_SESSION['cart'] as $key => $cart) {
                                 $idProduct = $cart['id_product'];
                                 $quantity = $cart['quantity'];
-                                $price = $cart['price'] * $quantity;
+                                $price = $cart['discount'] * $quantity;
                                 insert_orders_detail($codeOrders, $idProduct, $quantity, $price);
                                 update_total($idProduct, $quantity);
                             }
@@ -431,7 +433,7 @@ if (isset($_GET["act"])) {
                 foreach ($_SESSION['cart'] as $key => $cart) {
                     $idProduct = $cart['id_product'];
                     $quantity = $cart['quantity'];
-                    $price = $cart['price'] * $quantity;
+                    $price = $cart['discount'] * $quantity;
                     insert_orders_detail($codeOrders, $idProduct, $quantity, $price);
                     update_total($idProduct, $quantity);
                 }
@@ -491,4 +493,6 @@ if (isset($_GET["act"])) {
     include 'views/pages/home.php';
 }
 include 'views/footer.php';
+
+
 ?>

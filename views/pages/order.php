@@ -7,7 +7,7 @@
         foreach ($_SESSION['cart'] as $cart) {
                 if ($_SESSION['account']['id_user'] == $cart['id_user']){
         $quantity += $cart['quantity'];
-        $total += $cart['quantity'] * $cart['price'];
+        $total += $cart['quantity'] * $cart['discount'];
         ?>
         <form action="" method="post">
             <div class="block-cart">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="name-price-cart">
                         <h4>Giá:</h4>
-                        <p><?= number_format($cart['price'], 0, '.', '.') ?> VNĐ</p>
+                        <p><?= number_format($cart['discount'], 0, '.', '.') ?> VNĐ</p>
                     </div>
                     <div class="quantity-product-cart">
                         <h4>Số lượng:</h4>
